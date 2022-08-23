@@ -1,0 +1,60 @@
+.SignUpapgeWrapper{
+    margin:5px 100px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
+    color:#898e7e
+}
+
+
+.GridWrapper{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.heading{
+    margin-top: 15px;
+    text-align: center;
+    /* border: solid red 2px; */
+}
+
+.ThickLine{
+    height: 2px;
+    background-color: rgba(169, 162, 162, 0.867);
+    width: 100%;
+    margin-top: 12px;
+}
+
+
+.OauthLink{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: solid 1px #dddd;
+    border-radius: 5px;
+}
+.RightImageDiv{
+    background-color: #f2f5fc;
+}
+
+@media(max-width:1100px){
+    .form{
+        width: 100%;
+        margin: auto;
+    }
+    .RightImageDiv{
+        display: none;
+    }
+    .GridWrapper{
+        display: block;
+    }
+    .SignUpapgeWrapper{
+        margin: 0px;
+    }
+    .heading{
+        background-color: #f2f5fc;
+        margin-top: -50px;
+        width: 104%;
+        margin-left: -8px;
+        height:150px 
+    }
+    .LoGImage{
+        margin-top: 35px;
+    }
+}

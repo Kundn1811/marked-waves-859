@@ -20,9 +20,10 @@ export const signupSuccess = (payload) => {
         payload
     }
 }
-export const signinFailure = () => {
+export const signinFailure = (payload) => {
     return {
-        type : SIGNIN_FAILURE
+        type : SIGNIN_FAILURE,
+        payload
     }
 }
 
@@ -37,13 +38,15 @@ export const signinSuccess = (payload) => {
         payload
     }
 }
-export const signupFailure = () => {
+export const signupFailure = (payload) => {
     return {
-        type : SIGNUP_FAILURE
+        type : SIGNUP_FAILURE,
+        payload
     }
 }
 
 export const signup = (payload) => (dispatch) => {
+    console.log(payload)
     dispatch(signupRequest())
     return axios.post("http://localhost:8080/auth/signup",payload)
     .then((res)=>dispatch(signupSuccess(res.data)))

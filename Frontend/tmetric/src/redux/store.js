@@ -5,7 +5,7 @@ import { authReducer } from "./auth/authReducer";
 
 
 
-const rootReducer = combineReducers(authReducer,appReducer)
+const rootReducer = combineReducers({authReducer,appReducer})
 
 
 const composeEnhancers =
