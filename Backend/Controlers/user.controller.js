@@ -32,7 +32,7 @@ user.post("/signin",async(req,res)=>{
 
     if(!user) return res.send({message : "Please Signup first."})
     bcrypt.compare(password,user.password, function(err, result) {
-        if(err) return res.send({message:"Wrong credential"})
+        if(!result) return res.send({message:"Wrong credential"})
         if(result){
             jwt.sign({email,userId:user._id}, process.env.secretKey, function(err, token) {
                 if(err) return res.send({message : "wrong password."})
