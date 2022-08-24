@@ -3,10 +3,14 @@ import {
   Box,
   HStack,
   Heading,
+  Input,
+  InputGroup,
+  InputLeftElement,
   Button,
   Text,
   AspectRatio,
 } from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
 
 const HomepageHeader = () => {
   return (
@@ -20,6 +24,19 @@ const HomepageHeader = () => {
             TMetric is a smart choice for time tracking to see work in progress
             and keep team, cost and quality under control
           </Heading>
+          <InputGroup>
+            <InputLeftElement
+              pointerEvents="none"
+              children={<EmailIcon color="#3070f0" />}
+            />
+            <Input
+              placeholder="Enter your email address"
+              m="1rem 0"
+              maxW="450px"
+              background="white"
+              size="lg"
+            />
+          </InputGroup>
           <HStack>
             <Button size="lg" colorScheme="blue" mt="20px" minW="200px">
               Get Started
