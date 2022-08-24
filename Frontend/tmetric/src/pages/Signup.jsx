@@ -20,7 +20,7 @@ import {
   } from '@chakra-ui/react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import { useDispatch } from 'react-redux';
-  import {useNavigate} from "react-router-dom"
+  import {useNavigate,NavLink} from "react-router-dom"
 
   import {signup} from "../redux/auth/action"
 import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
@@ -44,7 +44,7 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
         else if(!password) passRef.current.focus()
         else{
             dispatch( signup({name,email,password}))
-            .then((res)=>res.type===SIGNUP_SUCCESS ? alert(res.payload.message) & navigate("/") : alert(res.payload.message) )
+            .then((res)=>res.type===SIGNUP_SUCCESS ? alert(res.payload.message) & navigate("/signin") : alert(res.payload.message) )
         }
     }
     return (
@@ -164,7 +164,9 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
 
                    <Stack pt={6}>
                      <Text align={'center'} color="black">
-                     Already have an account? <Link color={'blue.400'}>Login</Link>
+                     Already have an account? <Link color={'blue.400'}>
+                        <NavLink to="/signin" >Login</NavLink>
+                     </Link>
                      </Text>
                    </Stack>
                </Box>
