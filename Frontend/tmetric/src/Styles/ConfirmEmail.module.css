@@ -1,0 +1,63 @@
+.SignUpapgeWrapper{
+    margin:5px 100px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
+    color:#898e7e;
+    height: 100vh;
+    /* border: solid red 2px; */
+}
+.LoGImage{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.heading{
+    margin-top: 15px;
+    text-align: center;
+    height: 15vh;
+}
+.TextrBox{
+    padding :0px 14px
+}
+
+.GridWrapper{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(2,1fr);
+}
+.text{
+    margin: 5px;
+}
+.RightImageDiv{
+    background-color: #f2f5fc;
+}
+
+@media(max-width:1100px){
+    .form{
+        width: 100%;
+        margin: auto;
+    }
+    .RightImageDiv{
+        display: none;
+    }
+    .GridWrapper{
+        display: block;
+    }
+    .SignUpapgeWrapper{
+        margin: 0px;
+    }
+    .heading{
+        background-color: #f2f5fc;
+        margin-top: -50px;
+        width: 104%;
+        margin-left: -8px;
+        height:150px 
+    }
+    .LoGImage{
+        margin-top: 35px;
+    }
+}
+@media(max-width:800px){
+    .text{
+        margin-top: 10px;
+    }
+}
