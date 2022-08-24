@@ -7,7 +7,6 @@ import {
   Text,
   AspectRatio,
 } from "@chakra-ui/react";
-import { Show, Hide } from "@chakra-ui/react";
 
 const HomepageHeader = () => {
   return (
