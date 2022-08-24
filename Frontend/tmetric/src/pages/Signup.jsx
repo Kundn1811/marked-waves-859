@@ -177,6 +177,6 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
         <Image width="100%" src='https://id.tmetric.com/images/side_image_register.svg' />
     </div>
     </div>
-    </div>
+       </div>
     );
   }
