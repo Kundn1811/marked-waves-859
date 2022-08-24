@@ -7,11 +7,12 @@ import {
   Text,
   AspectRatio,
 } from "@chakra-ui/react";
+import { Show, Hide } from "@chakra-ui/react";
 
 const HomepageHeader = () => {
   return (
     <Fragment>
-      <HStack bg={"#FBEFCA"} pt="6.25rem" pb="1.25rem" pl="60px" pr="60px">
+      <HStack bg={"#FBEFCA"} pt="6.25rem" pb="1.25rem" pl="100px" pr="100px">
         <Box w="50%">
           <Heading as="h1" size="4xl" mb="1rem" noOfLines={2}>
             Make the best use of your time
@@ -28,13 +29,13 @@ const HomepageHeader = () => {
           </HStack>
         </Box>
         <Box w="50%">
-          {/* <AspectRatio maxW="560px" ratio={1}>
+          <AspectRatio ratio={16 / 9}>
             <iframe
-              title="naruto"
-              src="https://www.youtube.com/embed/QhBnZ6NPOY0"
+              title="tmetric"
+              src="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&controls=1&list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&listType=playlist"
               allowFullScreen
             />
-          </AspectRatio> */}
+          </AspectRatio>
         </Box>
       </HStack>
     </Fragment>
