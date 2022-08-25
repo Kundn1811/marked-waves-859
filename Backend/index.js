@@ -8,6 +8,7 @@ const workspace = require("./Controlers/workSpace.controller");
 
 
 
+
 const app = express();
 
 
@@ -16,6 +17,8 @@ app.use(express.json())
 app.use("/auth",user)
 app.use("/project", projectController)
 app.use("/workspace",workspace)
+
+
 
 
 
