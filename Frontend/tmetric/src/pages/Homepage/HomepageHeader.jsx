@@ -38,20 +38,38 @@ const HomepageHeader = () => {
             />
           </InputGroup>
           <HStack>
-            <Button size="lg" colorScheme="blue" mt="20px" minW="200px">
+            <Button size="lg" bg="#3070f0" color="white" mt="20px" minW="200px">
               Get Started
             </Button>
             <Text>Fully Functional 30-Day Trial</Text>
           </HStack>
         </Box>
         <Box w="50%">
-          <AspectRatio ratio={16 / 9}>
+          {/* <AspectRatio ratio={16 / 9}>
             <iframe
               title="tmetric"
               src="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&controls=1&list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&listType=playlist"
               allowFullScreen
             />
-          </AspectRatio>
+          </AspectRatio> */}
+          <div class="video-box">
+            <img
+              class="cover"
+              src="https://tmetric.com/media/w53hmkzd/img-video-cover.png"
+              width="720"
+              height="405"
+              alt=""
+            />
+            <a
+              href="#"
+              class="btn-play"
+              data-toggle="modal"
+              data-target="#youTubeVideoModal"
+              data-video-url="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&amp;controls=1&amp;list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&amp;listType=playlist"
+            >
+              Watch Video
+            </a>
+          </div>
         </Box>
       </HStack>
     </Fragment>

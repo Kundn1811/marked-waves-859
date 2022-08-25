@@ -42,14 +42,14 @@ const FeaturesInfo = () => {
     },
   ];
   return (
-    <Box p="60px">
+    <Box p="80px 60px">
       <Heading
         as="h2"
         fontWeight="bold"
-        fontSize="3rem"
-        m="0 auto 2rem"
+        fontSize="4rem"
+        m="0 auto 4rem"
         textAlign="center"
-        maxW="800px"
+        maxW="930px"
         noOfLines={2}
       >
         What makes TMetric your best business companion
@@ -65,13 +65,13 @@ const FeaturesInfo = () => {
             </TabPanel>
           ))}
         </TabPanels>
-        <TabList aria-orientation="vertical" p="0 20px">
+        <TabList aria-orientation="vertical" p="0 30px">
           {featureTypes.map((item) => (
             <Tab
               key={item.id}
               _selected={{ color: "#3070f0", bg: "#e7edfc" }}
               _hover={{ boxShadow: "-12px 16px 32px rgb(0 54 163 / 12%)" }}
-              p="15px 23px"
+              p="15px 33px 15px 23px"
               mb="1rem"
               border="1px solid #e2e7eb"
               w="100%"
@@ -80,7 +80,7 @@ const FeaturesInfo = () => {
               justifyContent="flex-start"
             >
               <Image src={item.icon} />
-              <Text fontSize="1.25rem" fontWeight="600" ml="17px">
+              <Text fontSize="1.5rem" fontWeight="600" ml="17px">
                 {item.name}
               </Text>
             </Tab>

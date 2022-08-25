@@ -2,6 +2,7 @@ import { Box, List, ListItem, Image } from "@chakra-ui/react";
 import React, { Fragment } from "react";
 import FeaturesInfo from "./FeaturesInfo";
 import HomepageHeader from "./HomepageHeader";
+import ManageTeam from "./ManageTeam";
 
 const Homepage = () => {
   const awardList = [
@@ -54,6 +55,7 @@ const Homepage = () => {
         </List>
       </Box>
       <FeaturesInfo />
+      <ManageTeam />
     </Fragment>
   );
 };
