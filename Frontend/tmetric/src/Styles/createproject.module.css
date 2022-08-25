@@ -1,0 +1,296 @@
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 30px;
+}
+
+/* After slide changes */
+.toggle:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    top: 1px;
+    left: 1px;
+    transition: all 0.5s;
+}
+
+/* Checkbox checked effect */
+.checkbox:checked+.toggle::after {
+    left: 20px;
+}
+
+/* Checkbox checked toggle label bg color */
+.checkbox:checked+.toggle {
+    background-color: var(--blue);
+}
+
+/* Checkbox vanished */
+.checkbox {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_container_form {
+    padding: 7px 40px;
+}
+
+.form_top_div {
+    display: flex;
+    place-items: center;
+    gap: 5px;
+}
+
+.form_top_div * {
+    font-weight: 350;
+    cursor: pointer;
+}
+
+.form_content_div {
+    border: 1px solid rgb(187, 167, 167);
+    height: 90vh;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+
+.form_content_btn_div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 25%;
+    position: sticky;
+    top: 1vh;
+}
+
+.form_content_data_div {
+    padding-right: 20%;
+    padding-top: 10px;
+}
+
+.form_content_btn_div>button {
+    border: none;
+    font-size: 18px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    text-align: left;
+}
+
+.form_content_btn_div>button:hover {
+    background-color: rgb(218, 218, 218)
+}
+
+.form_content_data_general>h2 {
+    font-weight: 400;
+}
+
+.form_content_data_general span {
+    color: #0e781f;
+    background-color: #dcf8e6;
+    padding: 0 5px 3px 5px;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 18px
+}
+
+.form_content_data_div1 {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    font-size: 14px;
+}
+
+.form_content_data_div1 input {
+    font-size: 15px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    outline: none;
+    color: var(--textColor);
+    border: 1px solid rgb(187, 167, 167);
+}
+
+.projectnameInput {
+    width: 28vw
+}
+
+.projectprInput {
+    width: 20vw
+}
+
+.form_content_data_div2 {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    font-size: 14px;
+}
+
+.form_content_data_div2 input {
+    font-size: 1vw;
+    padding: 5px 8px;
+    border-radius: 5px;
+    outline: none;
+    color: var(--textColor);
+    border: 1px solid rgb(187, 167, 167);
+    width: 20vw;
+    cursor: pointer;
+}
+
+.form_content_data_div2 select {
+    font-size: 1vw;
+    padding: 5px 8px;
+    border-radius: 5px;
+    outline: none;
+    color: var(--textColor);
+    border: 1px solid rgb(187, 167, 167);
+    width: 28vw;
+    cursor: pointer;
+}
+
+.form_content_data_div3 {
+    margin: 30px 0;
+    font-size: 14px;
+}
+
+.form_content_data_div3 textarea {
+    font-size: 1vw;
+    padding: 5px 8px;
+    border-radius: 5px;
+    outline: none;
+    color: var(--textColor);
+    border: 1px solid rgb(187, 167, 167);
+    width: 60vw;
+    height: 11vh;
+}
+
+.form_content_data_bilinng_div {
+    margin: 40px 0;
+}
+
+.form_content_data_bilinng_div>div {
+    display: flex;
+    gap: 10px;
+    place-items: center;
+    color: var(--textColor);
+
+}
+
+.form_content_data_bilinng_div>div:last-child {
+    border: 1px solid rgb(187, 167, 167);
+    width: 60vw;
+    height: 7.5vh;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1vw;
+    background-color: #f6f7f8;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_content_data_bilinng_div>div>h2 {
+    font-weight: 400;
+    color: black;
+}
+
+.form_content_data_team_div {
+    margin: 40px 0;
+    color: var(--textColor);
+}
+
+.form_content_data_team_div>div>h2 {
+    font-weight: 400;
+    color: black;
+}
+
+.form_content_data_team_div>div:last-child {
+    border: 1px dashed rgb(187, 167, 167);
+    width: 60vw;
+    height: 7.5vh;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1vw;
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+
+.form_content_data_team_div>div:last-child button {
+    font-size: 1vw;
+    padding: 5px 10px;
+    background-color: #d5d7da;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.form_content_data_end_div {
+    width: 60vw;
+    height: 9vh;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1vw;
+    background-color: #cbf0ff;
+    text-align: justify;
+    padding: 2px 10px;
+    color: #3d647e;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    box-sizing: border-box;
+    margin-bottom: 60vh;
+
+}
+
+.form_content_data_save_div {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    place-items: center;
+    color: white;
+    height: 7vh;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 5.5vh;
+    left: 35vw;
+    z-index: 1;
+}
+
+.form_content_data_save_div>div>button:first-child {
+    background-color: #3070f0;
+    padding: 5px 20px;
+    color: white;
+    border-radius: 5px;
+    font-size: 1vw;
+    margin-right: 10px;
+    cursor: pointer;
+
+}
+
+.form_content_data_save_div>div>button:last-child {
+    background-color: black;
+    padding: 4px 20px;
+    color: white;
+    border-radius: 5px;
+    font-size: 1vw;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.empty_div {
+    height: 2vh
+}
