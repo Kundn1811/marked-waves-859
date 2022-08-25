@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from '../Styles/sidebar.module.css'
 import TodoSideBar from "../components/TodoSideBar";
 import { BiTask } from "react-icons/bi";
+import Ts from "../components/Ts";
 
 function SideBar({showAdd}) {
     const sidebarRef = useRef(null);
@@ -116,7 +117,7 @@ function SideBar({showAdd}) {
               <span>Tasks</span>
             </div>
             <hr></hr>
-            <TodoSideBar showAdd={showAdd} />
+            <Ts showAdd={showAdd} />
           </div>
         </div>
       </>
