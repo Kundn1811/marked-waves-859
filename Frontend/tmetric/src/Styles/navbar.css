@@ -2,11 +2,8 @@ nav{
     position: fixed;
     width: 100%;
     z-index: 999;
-<<<<<<< HEAD
-    background-color: antiquewhite;
-=======
     background-color: #fbefca;
->>>>>>> a0bad256c3916ee68f0a8275528dd974265e5f45
+
 }
 nav .wrapper{
   max-width: 100vw;
@@ -15,10 +12,6 @@ nav .wrapper{
   display: flex;
   align-items: center;
   justify-content: space-between;
-<<<<<<< HEAD
-=======
- 
->>>>>>> a0bad256c3916ee68f0a8275528dd974265e5f45
 }
 
 .wrapper .nav-links{
@@ -57,18 +50,18 @@ nav .wrapper{
    padding: 1rem;
 }
 
-<<<<<<< HEAD
+
 .nav-links li:hover .mega_menu{
     opacity: 1;
     visibility:visible;
     transition: all 0.4s ease;
-=======
+}
 .nav-links li:hover .mega_menu {
     opacity: 1;
     visibility:visible;
     transition: all 0.4s ease;
     background: white;
->>>>>>> a0bad256c3916ee68f0a8275528dd974265e5f45
+
 }
 
 
@@ -91,5 +84,5 @@ nav .wrapper{
     transform: scale(1.2);
     transition: all 0.4s ease;
     color: #5184e6;
-}
+} 
 
