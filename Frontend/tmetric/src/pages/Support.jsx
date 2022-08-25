@@ -328,6 +328,173 @@ const Support = () => {
           </div>
         </div>
       </div>
+      {/* question ans part */}
+
+      <div className={style.qmain}>
+        <div>
+          <h2 className={style.videosph2}>Frequently asked questions</h2>
+        </div>
+
+        <div className={style.qmain1}>
+          <div className={style.qmain1div}>
+            <div className={style.qmain1divli}>
+              <h3>Subscription & Billing</h3>
+              <ul>
+                <li>• Do you have discounts for non-profits?</li>
+                <li>• Do you have volume discounts?</li>
+                <li>
+                  • Do I have to pay for myself even if I only monitor my
+                  employees?
+                </li>
+                <li>• Why 'Proceed to Checkout' button doesn't work?</li>
+                <li>
+                  • I've bought a subscription, why my workspace wasn't
+                  upgraded?
+                </li>
+                <li>• How Can I Change my Payment Details?</li>
+                <li>• How Can I Get My Invoices for Subscription?</li>
+                <li>
+                  • Can we retire a former team member license, but keep his
+                  data for historical purposes?
+                </li>
+              </ul>
+              <hr />
+            </div>
+
+            <div className={style.qmain1divli}>
+              <h3>Time Tracking</h3>
+              <ul>
+                <li>• Can I add custom notes for a time entry?</li>
+                <li>• Can I have two active timers at the same time?</li>
+                <li>
+                  • Do I need to install a browser extension to use TMetric?
+                </li>
+                <li>
+                  • Why does a report display less time than is actually
+                  tracked?
+                </li>
+                <li>
+                  • What should I do with 'Timer is longer than 12 hours' alert?
+                </li>
+                <li>• What does 'Monthly Balance' mean?</li>
+              </ul>
+              <hr />
+            </div>
+          </div>
+
+          <div className={style.qmain1div}>
+            <div className={style.qmain1divli}>
+              <h3>Productivity Tracking</h3>
+              <ul>
+                <li>• What data is collected in TMetric?</li>
+                <li>• How long is activity data stored?</li>
+                <li>• How can I delete my activity records?</li>
+                <li>• How to turn off activity recording?</li>
+                <li>• How to download user full activity?</li>
+              </ul>
+              <hr />
+            </div>
+
+            <div className={style.qmain1divli}>
+              <h3>Projects</h3>
+              <ul>
+                <li>
+                  • Can I allow creating projects for regular team members?
+                </li>
+                <li>
+                  • How can I assign a client to multiple projects at once?
+                </li>
+                <li>
+                  • Can I create a list of routine tasks for fast tracking?
+                </li>
+              </ul>
+              <hr />
+            </div>
+
+            <div className={style.qmain1divli}>
+              <h3>Team Management</h3>
+              <ul>
+                <li>
+                  • Can I delete a team member and not lose the time tracked on
+                  projects?
+                </li>
+                <li>
+                  • How can I add a team member to several projects at once?
+                </li>
+                <li>• How can I forbid team members to edit time manually?</li>
+              </ul>
+              <hr />
+            </div>
+          </div>
+
+          <div className={style.qmain1div}>
+            <div className={style.qmain1divli}>
+              <h3>Time Off</h3>
+              <ul>
+                <li>
+                  • How can I find out how much vacation time I will have in a
+                  while?
+                </li>
+                <li>
+                  • Is it possible for my team members to see who and when goes
+                  on vacation?
+                </li>
+                <li>• How to see workdays that an employee missed?</li>
+                <li>• How to add a bonus day off for an employee?</li>
+              </ul>
+              <hr />
+            </div>
+
+            <div className={style.qmain1divli}>
+              <h3>Reporting</h3>
+              <ul>
+                <li>• How can I see distribution of time between my tasks?</li>
+                <li>• How to view all time entries for entire project span?</li>
+                <li>
+                  • How to view time an employee spent working for each client?
+                </li>
+                <li>• How to view all time entries for a particular task?</li>
+                <li>
+                  • I want to get a report for a member that is set to
+                  inactive/locked.
+                </li>
+              </ul>
+              <hr />
+            </div>
+
+            <div className={style.qmain1divli}>
+              <h3>Tasks</h3>
+              <ul>
+                <li>• I am a workspace owner, why I don't see my tasks.</li>
+                <li>
+                  • How can I see my employee's private tasks that don't belong
+                  to any project?
+                </li>
+              </ul>
+              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* contact part */}
+
+      <div className={style.cmain}>
+        <div className={style.cmainh1}>
+          <h1>There is no topic you interested in?</h1>
+        </div>
+        <div className={style.cmainh1}>
+          <h3>
+            If you didn't find what you were looking for, you can make a support
+            request or email <br />
+            us to support@tmetric.com. We'll be glad to help you personally.
+          </h3>
+        </div>
+
+        <div className={style.cbtndiv}>
+          <button className={style.cbtn}>Contact Us</button>
+        </div>
+      </div>
     </div>
   );
 };
