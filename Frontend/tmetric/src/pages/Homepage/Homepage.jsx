@@ -3,7 +3,9 @@ import React, { Fragment } from "react";
 import EnsureProfit from "./Sections/EnsureProfit";
 import FeaturesInfo from "./Sections/FeaturesInfo";
 import HomepageHeader from "./Sections/HomepageHeader";
+import IntegrationSection from "./Sections/IntegrationSection";
 import ManageTeam from "./Sections/ManageTeam";
+import MonitorTime from "./Sections/MonitorTime";
 
 const Homepage = () => {
   const awardList = [
@@ -63,6 +65,8 @@ const Homepage = () => {
       <FeaturesInfo />
       <ManageTeam />
       <EnsureProfit />
+      <MonitorTime />
+      <IntegrationSection />
     </Fragment>
   );
 };
