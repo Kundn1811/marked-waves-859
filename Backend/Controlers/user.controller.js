@@ -36,7 +36,7 @@ user.post("/signin",async(req,res)=>{
         if(result){
             jwt.sign({email,userId:user._id}, process.env.secretKey, function(err, token) {
                 if(err) return res.send({message : "wrong password."})
-                return res.send({message : "Signeded in Successfully.",token:token})
+                return res.send({message : "Signed in Successfully.",token:token})
             });
         }
     });
