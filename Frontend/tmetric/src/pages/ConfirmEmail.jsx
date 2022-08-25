@@ -21,20 +21,19 @@ import {
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import { useDispatch } from 'react-redux';
   import {useNavigate,NavLink} from "react-router-dom"
-import styles from "../Styles/ConfirmEmail.module.css"
+  import styles from "../Styles/ConfirmEmail.module.css"
 
 const ConfirmEmail = () => {
+    const [resend,setResend] = React.useState(false)
 
     const navigate  = useNavigate()
     const email = loadData("tmetricUser")?.email
 
     React.useEffect(()=>{
-        setTimeout(()=>{
-            
-            // navigate("/")
-           
+        setTimeout(()=>{ 
+            navigate("/chooseworkspace")
         },5000)
-    })
+    },[resend])
 
   return (
     <div>
@@ -69,6 +68,7 @@ const ConfirmEmail = () => {
                                 <Stack spacing={10}>
                 <Input
                    className={styles.text} 
+                   onClick={()=>setResend(!resend)}
                   type='submit'
                   bg={'#898e7e'}
                   color={'white'}

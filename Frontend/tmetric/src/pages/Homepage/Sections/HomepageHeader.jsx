@@ -17,10 +17,16 @@ const HomepageHeader = () => {
     <Fragment>
       <HStack bg={"#FBEFCA"} pt="6.25rem" pb="1.25rem" pl="100px" pr="100px">
         <Box w="50%">
-          <Heading as="h1" size="4xl" mb="1rem" noOfLines={2}>
+          <Heading
+            as="h1"
+            fontSize="3.75rem"
+            fontWeight="bold"
+            mb="1rem"
+            noOfLines={2}
+          >
             Make the best use of your time
           </Heading>
-          <Heading as="h3" size="lg">
+          <Heading as="h3" fontSize="1.25rem" fontWeight="bold">
             TMetric is a smart choice for time tracking to see work in progress
             and keep team, cost and quality under control
           </Heading>
@@ -34,24 +40,48 @@ const HomepageHeader = () => {
               m="1rem 0"
               maxW="450px"
               background="white"
-              size="lg"
+              size="md"
             />
           </InputGroup>
           <HStack>
-            <Button size="lg" colorScheme="blue" mt="20px" minW="200px">
+            <Button
+              size="md"
+              bg="#3070f0"
+              color="white"
+              minW="200px"
+              _hover={{ bg: "#0053a6" }}
+            >
               Get Started
             </Button>
             <Text>Fully Functional 30-Day Trial</Text>
           </HStack>
         </Box>
         <Box w="50%">
-          <AspectRatio ratio={16 / 9}>
+          {/* <AspectRatio ratio={16 / 9}>
             <iframe
               title="tmetric"
               src="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&controls=1&list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&listType=playlist"
               allowFullScreen
             />
-          </AspectRatio>
+          </AspectRatio> */}
+          <div class="video-box">
+            <img
+              class="cover"
+              src="https://tmetric.com/media/w53hmkzd/img-video-cover.png"
+              width="720"
+              height="405"
+              alt=""
+            />
+            <a
+              href="#"
+              class="btn-play"
+              data-toggle="modal"
+              data-target="#youTubeVideoModal"
+              data-video-url="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&amp;controls=1&amp;list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&amp;listType=playlist"
+            >
+              Watch Video
+            </a>
+          </div>
         </Box>
       </HStack>
     </Fragment>
