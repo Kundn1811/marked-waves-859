@@ -1,19 +1,8 @@
-/* .SignUppageCont{
-    width: 100%;
-    position: relative;
-    top:0px;
-    bottom:0px;
-    border: solid red 2px;
-    z-index:100000000000000
-} */
-
 .SignUpapgeWrapper{
-   
-
     margin:5px 100px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 5px;
-    color:#898e7e;
+    color:#898e7e
 }
 
 
@@ -25,8 +14,15 @@
     margin-top: 15px;
     text-align: center;
     /* border: solid red 2px; */
+    margin-bottom: -15px;
 }
-
+.FormBOx{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: solid red 2px; */
+}
 .ThickLine{
     height: 2px;
     background-color: rgba(169, 162, 162, 0.867);
