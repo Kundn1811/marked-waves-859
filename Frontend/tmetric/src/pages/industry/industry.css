@@ -1,0 +1,105 @@
+.indus-top{
+   background-color: #ffebe8;
+}
+.indus-top-head{
+   height: 50vh;
+   width: 60%;
+   margin: auto;
+   padding: 4rem 5rem 0 5rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+   
+   
+}
+
+.indus-mid {
+   display: grid;
+   grid-template-columns: repeat(4,1fr);
+   gap: 2rem;
+   margin-top: 2rem;
+   padding: 2rem 3rem;
+
+}
+.indus-mid .card{
+   border: 0.5px solid rgba(196, 196, 196, 0.9);
+   border-radius: 10px;
+   cursor: pointer;
+   
+}
+.indus-mid .card:hover{
+   transition: all 0.5s ease;
+   box-shadow: rgb(100 100 123 / 30%) -15px 15px 40px 0px;
+
+}
+
+.card .card-body{
+   padding: 0rem 1.5rem 1.5rem;
+}
+.card-body>div{
+   border: 0.5px solid rgba(187, 187, 187, 0.956);
+   display: inline-block;
+   padding: 0.7rem;
+   border-radius: 50%;
+   margin-top: 1.5rem;
+}
+
+.indus-review{
+  height: 50vh;
+  background: #fff2cc;
+  display: flex;
+}
+.indus-review>div{
+   width: 50%;
+   height: 90%;
+   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.indus-review>div>img{
+   width: 50%;
+}
+.indus-company{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 30vh;
+   justify-content: space-evenly;
+}
+.indus-company>p{
+   font-size: 1.2rem;
+   font-weight: 500;
+}
+.company-logos{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   width: 95%;
+}
+.indus-trial{
+height: 30vh;
+background: #990636;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+}
+@media (max-width: 1424px){
+   .indus-mid {      
+   grid-template-columns: repeat(3,1fr);
+   } 
+}
+@media (max-width: 1024px) {
+   .indus-mid {      
+      grid-template-columns: repeat(2,1fr);   
+   } 
+}
+@media (max-width: 600px) {
+   .indus-mid {      
+      grid-template-columns:1fr;   
+   } 
+}
+
