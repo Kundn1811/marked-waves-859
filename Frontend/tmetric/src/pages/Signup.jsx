@@ -30,6 +30,7 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
     const [name,setName] = React.useState("")
     const [email,setEmail] = React.useState("")
     const [password,setPassword] = React.useState("")
+    const [cond,setCond] = React.useState(false)
     const nameRef = React.useRef()
     const emailRef = React.useRef()
     const passRef = React.useRef()
@@ -42,25 +43,19 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
         if(!name) nameRef.current.focus()
         else if(!email) emailRef.current.focus()
         else if(!password) passRef.current.focus()
+        else if(!cond) return alert("please acept the terms and condition")
         else{
             dispatch( signup({name,email,password}))
-            .then((res)=>res.type===SIGNUP_SUCCESS ? alert(res.payload.message) & navigate("/signin") : alert(res.payload.message) )
+            .then((res)=>res.type===SIGNUP_SUCCESS && res.payload.message==="Account created successfully." ? alert(res.payload.message) & navigate("/confirmemail") : alert(res.payload.message) )
         }
     }
     return (
-       <div className={styles.SignUpapgeWrapper}>
+       <div className={styles.SignUppageCont}>
+               <div className={styles.SignUpapgeWrapper}>
          <div className={styles.GridWrapper}>
 
     <div className={styles.form}>
-            <Flex
-            //    minH={'100vh'}
-            //    align={'center'}
-            //    justify={'center'}
-           
-            //    border="solid red 2px"
-            //    width="100%"
-
-            >
+            <Flex>
                <Stack spacing={8} mx={'auto'} width="100%" py={12} px={2} margin="auto">
                <Stack align={'center'}className={styles.heading}>
                   <Image className={styles.LoGImage} src='https://id.tmetric.com/images/tmetric_logo_and_text.svg' />
@@ -115,7 +110,7 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
                   direction={{ base: 'column', sm: 'row' }}
                   align={'start'}
                   justify={'flex-start'}>
-                  <Checkbox>I accept</Checkbox>
+                  <Checkbox onChange={()=>setCond(!cond)}>I accept</Checkbox>
                   <Link color={'blue.400'}>Terms of Service</Link>
                 </Stack>
                 <Input
@@ -177,6 +172,7 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
         <Image width="100%" src='https://id.tmetric.com/images/side_image_register.svg' />
     </div>
     </div>
+       </div>
        </div>
     );
   }
