@@ -25,6 +25,7 @@ import {
 
 
 const ChooseWorkSpace = () => {
+    const navigate = useNavigate()
   return (
     <div>
         <div className={styles.SignUpapgeWrapper} >
@@ -59,7 +60,9 @@ const ChooseWorkSpace = () => {
                       <Box  py={3} px={4}>
                          <IoAdd fontSize={25} color={"green"}  />
                       </Box>
-                      <Flex direction={"column"}>
+                      <Flex direction={"column"} onClick={()=>{
+                        navigate("/workspacepage")
+                      }} >
                         <Heading fontWeight={400} fontSize={20}  color="black">Create Your Workspace</Heading>
                         <Text>For company owners and managers</Text>
                       </Flex>

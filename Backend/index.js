@@ -2,7 +2,8 @@ const express = require("express");
 
 const connection = require("./Config/db");
 const user = require("./Controlers/user.controller");
-const cors = require("cors")
+const cors = require("cors");
+const workspace = require("./Controlers/workSpace.controller");
 
 
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 app.use("/auth",user)
+app.use("/workspace",workspace)
 
 
 app.listen(process.env.port,async()=>{

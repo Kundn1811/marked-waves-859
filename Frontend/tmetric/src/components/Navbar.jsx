@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Heading } from "@chakra-ui/react";
 import "../Styles/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BiChevronDown } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
 
@@ -360,7 +360,7 @@ const Navbar = () => {
               color: "white",
             }}
           >
-            Sign Up
+            <NavLink to="/signup">Sign Up</NavLink>
           </Button>
         </div>
       </div>

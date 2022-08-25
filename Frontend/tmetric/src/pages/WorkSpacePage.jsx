@@ -25,7 +25,9 @@ import {
   import {useNavigate,NavLink} from "react-router-dom"
 
   import {signup} from "../redux/auth/action"
-import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
+  import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
+import { createWorkSpace } from '../redux/app/action';
+import { WORKSPACE_CREATE_SUCCESS } from '../redux/app/actionType';
   
   export default function WorkSpacePage() {
     const [teamSize, setSize] = React.useState("1");
@@ -43,8 +45,8 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
         if(!companyName) compRef.current.focus()
         else if(!teamSize) sizeRef.current.focus()
         else{
-            dispatch( signup({companyName,teamSize}))
-            .then((res)=>res.type===SIGNUP_SUCCESS ? alert(res.payload.message) & navigate("/signin") : alert(res.payload.message) )
+            dispatch( createWorkSpace({companyName,teamSize}))
+            .then((res)=>res.type===WORKSPACE_CREATE_SUCCESS && res.payload.message==="Workspace created successfully Successfully." ? alert(res.payload.message) & navigate("/integratettworkspace") : alert(res.payload.message) )
         }
     }
     return (
