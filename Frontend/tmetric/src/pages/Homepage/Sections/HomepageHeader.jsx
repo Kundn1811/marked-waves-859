@@ -17,10 +17,16 @@ const HomepageHeader = () => {
     <Fragment>
       <HStack bg={"#FBEFCA"} pt="6.25rem" pb="1.25rem" pl="100px" pr="100px">
         <Box w="50%">
-          <Heading as="h1" size="4xl" mb="1rem" noOfLines={2}>
+          <Heading
+            as="h1"
+            fontSize="3.75rem"
+            fontWeight="bold"
+            mb="1rem"
+            noOfLines={2}
+          >
             Make the best use of your time
           </Heading>
-          <Heading as="h3" size="lg">
+          <Heading as="h3" fontSize="1.25rem" fontWeight="bold">
             TMetric is a smart choice for time tracking to see work in progress
             and keep team, cost and quality under control
           </Heading>
@@ -34,11 +40,17 @@ const HomepageHeader = () => {
               m="1rem 0"
               maxW="450px"
               background="white"
-              size="lg"
+              size="md"
             />
           </InputGroup>
           <HStack>
-            <Button size="lg" bg="#3070f0" color="white" mt="20px" minW="200px">
+            <Button
+              size="md"
+              bg="#3070f0"
+              color="white"
+              minW="200px"
+              _hover={{ bg: "#0053a6" }}
+            >
               Get Started
             </Button>
             <Text>Fully Functional 30-Day Trial</Text>

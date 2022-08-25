@@ -46,10 +46,10 @@ const FeaturesInfo = () => {
       <Heading
         as="h2"
         fontWeight="bold"
-        fontSize="4rem"
-        m="0 auto 4rem"
+        fontSize="3rem"
+        m="0 auto 2rem"
         textAlign="center"
-        maxW="930px"
+        maxW="840px"
         noOfLines={2}
       >
         What makes TMetric your best business companion
@@ -80,7 +80,7 @@ const FeaturesInfo = () => {
               justifyContent="flex-start"
             >
               <Image src={item.icon} />
-              <Text fontSize="1.5rem" fontWeight="600" ml="17px">
+              <Text fontSize="1.25rem" fontWeight="600" ml="17px">
                 {item.name}
               </Text>
             </Tab>

@@ -1,8 +1,9 @@
 import { Box, List, ListItem, Image } from "@chakra-ui/react";
 import React, { Fragment } from "react";
-import FeaturesInfo from "./FeaturesInfo";
-import HomepageHeader from "./HomepageHeader";
-import ManageTeam from "./ManageTeam";
+import EnsureProfit from "./Sections/EnsureProfit";
+import FeaturesInfo from "./Sections/FeaturesInfo";
+import HomepageHeader from "./Sections/HomepageHeader";
+import ManageTeam from "./Sections/ManageTeam";
 
 const Homepage = () => {
   const awardList = [
@@ -45,17 +46,23 @@ const Homepage = () => {
   return (
     <Fragment>
       <HomepageHeader />
-      <Box p="12px 60px" borderBottom="1px solid #e2e7eb">
+      <Box p="15px 60px" borderBottom="1px solid #e2e7eb">
         <List display="flex" justifyContent="center" alignItems="center">
           {awardList.map((award) => (
             <ListItem key={award.id} p="12px" w="14.28%">
-              <Image src={award.image} alt={award.title} />
+              <Image
+                src={award.image}
+                alt={award.title}
+                width="120"
+                height="120"
+              />
             </ListItem>
           ))}
         </List>
       </Box>
       <FeaturesInfo />
       <ManageTeam />
+      <EnsureProfit />
     </Fragment>
   );
 };
