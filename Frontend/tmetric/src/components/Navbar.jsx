@@ -375,7 +375,8 @@ const Navbar = () => {
             href={"#"}
             _hover=""
           >
-            Log In
+            <NavLink to="/signin">Log In</NavLink>
+            
           </Button>
           <Button
             display={{ base: "none", md: "inline-flex" }}
