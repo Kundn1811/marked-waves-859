@@ -1,4 +1,15 @@
-import { Box, Heading, Text, Button, Link, HStack } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Button,
+  Link,
+  HStack,
+  Input,
+  List,
+  ListItem,
+  ListIcon,
+} from "@chakra-ui/react";
 import {
   Slider,
   SliderTrack,
@@ -6,6 +17,7 @@ import {
   SliderThumb,
   SliderMark,
 } from "@chakra-ui/react";
+import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import React from "react";
 
 const Pricing = () => {
@@ -20,67 +32,71 @@ const Pricing = () => {
     },
     {
       id: 3,
-      title: "Timer button in 50+ web apps",
+      title: "Reporting",
     },
     {
       id: 4,
-      title: "Calendar integrations: Google, Outlook",
+      title: "Timer button in 50+ web apps",
     },
     {
       id: 5,
-      title: "Billable rates and money tracking",
+      title: "Calendar integrations: Google, Outlook",
     },
     {
       id: 6,
-      title: "Budgeting for projects",
+      title: "Billable rates and money tracking",
     },
     {
       id: 7,
-      title: "Invoicing",
+      title: "Budgeting for projects",
     },
     {
       id: 8,
-      title: "Task management",
+      title: "Invoicing",
     },
     {
       id: 9,
-      title: "Activity levels for employees",
+      title: "Task management",
     },
     {
       id: 10,
-      title: "Apps and sites usage reports",
+      title: "Activity levels for employees",
     },
     {
       id: 11,
-      title: "Screenshots capturing",
+      title: "Apps and sites usage reports",
     },
     {
       id: 12,
-      title: "Paid time off tracking",
+      title: "Screenshots capturing",
     },
     {
       id: 13,
-      title: "Payroll for employees",
+      title: "Paid time off tracking",
     },
     {
       id: 14,
-      title: "Time tracking permissions",
+      title: "Payroll for employees",
     },
     {
       id: 15,
-      title: "Time-sync with Jira and QuickBooks",
+      title: "Time tracking permissions",
     },
     {
       id: 16,
-      title: "Time Off Calendar",
+      title: "Time-sync with Jira and QuickBooks",
     },
     {
       id: 17,
-      title: "Work Schedule",
+      title: "Time Off Calendar",
     },
     {
       id: 18,
       title: "Work Schedule",
+    },
+    {
+      id: 19,
+      title: "Team Dashboard",
     },
   ];
 
@@ -99,21 +115,152 @@ const Pricing = () => {
           All plans include free 30-day trial. No credit card required!
         </Text>
       </Box>
-      <Box
-        m="8px 40px"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        border="1px solid #e2e6eb"
-        borderRadius="12px"
-        p="1.1rem 2rem"
-      >
-        <Slider aria-label="slider-ex-2" colorScheme="blue" defaultValue={30}>
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
+
+      {/* Select Plan Section */}
+      <Box mb="2rem">
+        <Box
+          m="30px 40px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          border="1px solid #e2e6eb"
+          borderRadius="12px"
+          p="1.1rem 2rem"
+        >
+          <Text fontSize="1.25rem" fontWeight="500">
+            Team Size
+          </Text>
+          <Input type="number" w="90px" mr="3rem" />
+          <Slider
+            aria-label="slider-ex-2"
+            colorScheme="blue"
+            defaultValue={30}
+            // size="lg"
+          >
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </Box>
+        <HStack
+          m="0px 40px 30px"
+          display="flex"
+          textAlign="center"
+          justifyContent="center"
+        >
+          <Box border="1px solid #e2e6eb" borderRadius="12px" p="1.1rem 2rem">
+            <Heading>Business</Heading>
+            <Box></Box>
+            <List spacing={3} textAlign="left">
+              {options.map((elem) => (
+                <ListItem>
+                  <HStack>
+                    <ListIcon as={CheckIcon} color="green.500" />
+                    <Text
+                      borderBottom="1px solid #ebedf0"
+                      w="100%"
+                      p=".8125rem 0 .375rem 0"
+                    >
+                      {elem.title}
+                    </Text>
+                  </HStack>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+
+          <Box border="1px solid #e2e6eb" borderRadius="12px" p="1.1rem 2rem">
+            <Heading>Professional</Heading>
+            <Box></Box>
+            <List spacing={3} textAlign="left">
+              {options.map((elem) => (
+                <ListItem>
+                  {elem.id <= "10" ? (
+                    <HStack>
+                      <ListIcon as={CheckIcon} color="green.500" />
+
+                      <Text
+                        borderBottom="1px solid #ebedf0"
+                        w="100%"
+                        p=".8125rem 0 .375rem 0"
+                      >
+                        {elem.title}
+                      </Text>
+                    </HStack>
+                  ) : (
+                    <HStack>
+                      <ListIcon as={CloseIcon} color="#a1a7b2" />
+                      <Text
+                        borderBottom="1px solid #ebedf0"
+                        color="#a1a7b2"
+                        w="100%"
+                        p=".8125rem 0 .375rem 0"
+                      >
+                        {elem.title}
+                      </Text>
+                    </HStack>
+                  )}
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+
+          <Box border="1px solid #e2e6eb" borderRadius="12px" p="1.1rem 2rem">
+            <Heading>Free</Heading>
+            <Box></Box>
+            <List spacing={3} textAlign="left">
+              {options.map((elem) => (
+                <ListItem>
+                  {elem.id <= "4" ? (
+                    <HStack>
+                      <ListIcon as={CheckIcon} color="green.500" />
+                      <Text
+                        borderBottom="1px solid #ebedf0"
+                        w="100%"
+                        p=".8125rem 0 .375rem 0"
+                      >
+                        {elem.title}
+                      </Text>
+                    </HStack>
+                  ) : (
+                    <HStack>
+                      <ListIcon as={CloseIcon} color="#a1a7b2" />
+                      <Text
+                        borderBottom="1px solid #ebedf0"
+                        color="#a1a7b2"
+                        w="100%"
+                        p=".8125rem 0 .375rem 0"
+                      >
+                        {elem.title}
+                      </Text>
+                    </HStack>
+                  )}
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </HStack>
+
+        <HStack className="btn2" justifyContent="center" mb="1rem">
+          <Button
+            size="md"
+            bg="#3070f0"
+            color="white"
+            minW="200px"
+            _hover={{ bg: "#0053a6" }}
+          >
+            Get Started
+          </Button>
+          <Text>Fully Functional 30-Day Trial</Text>
+        </HStack>
+
+        <Text textAlign="center">
+          Checkout out{" "}
+          <Link style={{ color: "#3070f0" }} href="#">
+            detailed plan comparison
+          </Link>{" "}
+        </Text>
       </Box>
 
       {/* How To Buy Section  */}
@@ -270,7 +417,7 @@ const Pricing = () => {
           fontWeight="bold"
           m="0 0 2.65rem"
         >
-          Other Question
+          Other Questions
         </Heading>
 
         <Box maxW="728px" m="0 auto">
