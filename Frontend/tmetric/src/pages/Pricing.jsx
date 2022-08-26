@@ -18,9 +18,11 @@ import {
   SliderMark,
 } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
-import React from "react";
+import React, { useState } from "react";
 
 const Pricing = () => {
+  const [teamSize, setTeamSize] = useState(1);
+
   const options = [
     {
       id: 1,
@@ -119,7 +121,7 @@ const Pricing = () => {
       {/* Select Plan Section */}
       <Box mb="2rem">
         <Box
-          m="30px 40px"
+          m="30px 60px"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -127,15 +129,34 @@ const Pricing = () => {
           borderRadius="12px"
           p="1.1rem 2rem"
         >
-          <Text fontSize="1.25rem" fontWeight="500">
+          <Text fontSize="1.25rem" fontWeight="500" mr="10px">
             Team Size
           </Text>
-          <Input type="number" w="90px" mr="3rem" />
+          <Input
+            type="number"
+            w="90px"
+            mr="2rem"
+            value={teamSize}
+            min="1"
+            max="200"
+            onChange={(e) =>
+              setTeamSize(
+                e.target.value > 200
+                  ? 200
+                  : e.target.value < 1
+                  ? 1
+                  : e.target.value
+              )
+            }
+          />
           <Slider
             aria-label="slider-ex-2"
             colorScheme="blue"
-            defaultValue={30}
-            // size="lg"
+            min={1}
+            max={200}
+            defaultValue={teamSize}
+            onChangeEnd={(val) => setTeamSize(val)}
+            w="79%"
           >
             <SliderTrack>
               <SliderFilledTrack />
@@ -151,10 +172,24 @@ const Pricing = () => {
         >
           <Box border="1px solid #e2e6eb" borderRadius="12px" p="1.1rem 2rem">
             <Heading>Business</Heading>
-            <Box></Box>
+            <Box
+              bg="#f6f7f8"
+              borderRadius="12px"
+              textAlign="center"
+              p="0.4rem 1rem .8rem"
+              m="1.5rem 0"
+            >
+              <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                ${" "}
+                <span style={{ fontSize: "3rem", color: "#212529" }}>
+                  {7 * Number(teamSize)}
+                </span>
+                /month
+              </Text>
+            </Box>{" "}
             <List spacing={3} textAlign="left">
               {options.map((elem) => (
-                <ListItem>
+                <ListItem key={elem.id}>
                   <HStack>
                     <ListIcon as={CheckIcon} color="green.500" />
                     <Text
@@ -172,10 +207,24 @@ const Pricing = () => {
 
           <Box border="1px solid #e2e6eb" borderRadius="12px" p="1.1rem 2rem">
             <Heading>Professional</Heading>
-            <Box></Box>
+            <Box
+              bg="#f6f7f8"
+              borderRadius="12px"
+              textAlign="center"
+              p="0.4rem 1rem .8rem"
+              m="1.5rem 0"
+            >
+              <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                ${" "}
+                <span style={{ fontSize: "3rem", color: "#212529" }}>
+                  {5 * Number(teamSize)}
+                </span>
+                /month
+              </Text>
+            </Box>
             <List spacing={3} textAlign="left">
               {options.map((elem) => (
-                <ListItem>
+                <ListItem key={elem.id}>
                   {elem.id <= "10" ? (
                     <HStack>
                       <ListIcon as={CheckIcon} color="green.500" />
@@ -208,10 +257,21 @@ const Pricing = () => {
 
           <Box border="1px solid #e2e6eb" borderRadius="12px" p="1.1rem 2rem">
             <Heading>Free</Heading>
-            <Box></Box>
+            <Box
+              bg="#f6f7f8"
+              borderRadius="12px"
+              textAlign="center"
+              p="0.4rem 1rem .8rem"
+              m="1.5rem 0"
+            >
+              <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                $ <span style={{ fontSize: "3rem", color: "#212529" }}>0</span>
+                /month
+              </Text>
+            </Box>{" "}
             <List spacing={3} textAlign="left">
               {options.map((elem) => (
-                <ListItem>
+                <ListItem key={elem.id}>
                   {elem.id <= "4" ? (
                     <HStack>
                       <ListIcon as={CheckIcon} color="green.500" />
