@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { BsPlayFill } from "react-icons/bs";
 import {
   Box,
   HStack,
@@ -8,13 +9,38 @@ import {
   InputLeftElement,
   Button,
   Text,
-  AspectRatio,
+  Image,
 } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 
 const HomepageHeader = () => {
+  const [video, setVideo] = useState(false);
   return (
     <Fragment>
+      {video && (
+        <Box
+          width="100%"
+          height="100vh"
+          position="fixed"
+          top="5%"
+          zIndex="200"
+          backgroundColor="rgba(68, 66, 66, 0.693)"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          onClick={() => setVideo(false)}
+        >
+          <iframe
+            src="https://www.youtube.com/embed/d2LwNiALPIM"
+            title="Tmetric Intro Video"
+            width="90%"
+            height="90%"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </Box>
+      )}
       <HStack bg={"#FBEFCA"} pt="6.25rem" pb="1.25rem" pl="80px" pr="80px">
         <Box w="50%" p="0 15px">
           <Heading
@@ -58,31 +84,31 @@ const HomepageHeader = () => {
           </HStack>
         </Box>
         <Box w="50%" p="0 15px">
-          <AspectRatio ratio={16 / 9}>
-            <iframe
-              title="tmetric"
-              src="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&controls=1&list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&listType=playlist"
-              allowFullScreen
-            />
-          </AspectRatio>
-          {/* <div class="video-box">
-            <img
-              class="cover"
+          <Box onClick={() => setVideo(true)} position="relative">
+            <Image
               src="https://tmetric.com/media/w53hmkzd/img-video-cover.png"
-              width="720"
-              height="405"
               alt=""
             />
-            <a
-              href="#"
-              class="btn-play"
-              data-toggle="modal"
-              data-target="#youTubeVideoModal"
-              data-video-url="https://www.youtube.com/embed/d2LwNiALPIM?autoplay=1&amp;controls=1&amp;list=PL74QEPdFcvLY9y7ZGsu9IE2kMwGJmAT3f&amp;listType=playlist"
+            <Box
+              position="absolute"
+              top="28%"
+              left="42%"
+              fontSize="60px"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width="110px"
+              height="110px"
+              backgroundColor="#212529"
+              color="white"
+              borderRadius="50%"
+              boxShadow="rgb(50 50 93 / 25%) 0px 13px 27px -5px rgb(0 0 0 / 30%) 0px 8px 16px -8px"
+              cursor="pointer"
+              transitionDuration="0.3s"
             >
-              Watch Video
-            </a>
-          </div> */}
+              <BsPlayFill onClick={() => setVideo(true)} />
+            </Box>
+          </Box>
         </Box>
       </HStack>
     </Fragment>
