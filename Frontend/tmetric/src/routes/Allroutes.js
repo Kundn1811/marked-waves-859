@@ -8,6 +8,7 @@ import ChooseWorkSpace from "../pages/ChooseWorkSpace";
 import WorkSpacePage from "../pages/WorkSpacePage";
 import SetupAlmostComp from "../pages/SetupAlmostComp";
 import IntegrateTTWorkFlowPage from "../pages/IntegrateTTWorkflowPage";
+import ErrorPage from '../pages/ErrorPage';
 
 
 const Allroutes = () => {
@@ -21,6 +22,7 @@ const Allroutes = () => {
       <Route path="/integratettworkspace" element={<IntegrateTTWorkFlowPage />} />
       <Route path="/workspacepage" element={<WorkSpacePage />} />
       <Route path="/setupalmostcomp" element={<SetupAlmostComp />} />
+      <Route path="/*" element={<ErrorPage />} />
     </Routes>
   );
 };

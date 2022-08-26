@@ -44,7 +44,7 @@ import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
         else if(!password) passRef.current.focus()
         else{
             dispatch(signin({email,password}))
-            .then((res)=>res.type===SIGNIN_SUCCESS ? alert(res.payload.message) & navigate("/") : alert(res.payload.message) )
+            .then((res)=>res.type===SIGNIN_SUCCESS && res.payload.message=== "Signed in Successfully." ? alert(res.payload.message) & navigate("/") : alert(res.payload.message) )
         }
     }
     return (
