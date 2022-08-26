@@ -8,9 +8,13 @@ import ChooseWorkSpace from "../pages/ChooseWorkSpace";
 import WorkSpacePage from "../pages/WorkSpacePage";
 import SetupAlmostComp from "../pages/SetupAlmostComp";
 import IntegrateTTWorkFlowPage from "../pages/IntegrateTTWorkflowPage";
+import ErrorPage from '../pages/ErrorPage';
 import Pricing from "../pages/Pricing";
+
 import Dashboard from "../pages/Dashboard";
 import NewDashboard from "../pages/NewDashboard";
+
+
 
 const Allroutes = () => {
   return (
@@ -27,8 +31,12 @@ const Allroutes = () => {
       <Route path="/workspacepage" element={<WorkSpacePage />} />
       <Route path="/setupalmostcomp" element={<SetupAlmostComp />} />
       <Route path="/pricing" element={<Pricing />} />
+
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/newdashboard" element={<NewDashboard/>} />
+
+
+       <Route path="/*" element={<ErrorPage />} />
 
     </Routes>
   );
