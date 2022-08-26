@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Button, Link } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Link, HStack } from "@chakra-ui/react";
 import {
   Slider,
   SliderTrack,
@@ -116,6 +116,152 @@ const Pricing = () => {
         </Slider>
       </Box>
 
+      {/* How To Buy Section  */}
+      <Box borderTop="1px solid #e2e6eb" p="3.1875rem 0 2.5rem">
+        <Heading
+          textAlign="center"
+          fontSize="2.25rem"
+          fontWeight="bold"
+          m="0 0 2.65rem"
+        >
+          How to Buy ?
+        </Heading>
+
+        <Box style={{ width: "50%", margin: "auto" }}>
+          <HStack mt="30px">
+            <Button
+              background="#e7edfc"
+              color="#2e4497"
+              fontSize="25px"
+              width="50px"
+              height="50px"
+              marginRight="40px"
+              fontWeight="600"
+              borderRadius="12px"
+              border="none"
+            >
+              1
+            </Button>
+            <Text>
+              <Link to="/login" style={{ color: "#3070f0" }}>
+                Log in
+              </Link>
+              <span> </span>
+              to your TMetric account. If you don't have one,
+              <span> </span>
+              <Link href="/signup" style={{ color: "#3070f0" }}>
+                sign up
+              </Link>
+              <span> </span>
+              now.
+            </Text>
+          </HStack>
+
+          <HStack mt="30px">
+            <Button
+              background="#e7edfc"
+              color="#2e4497"
+              fontSize="25px"
+              width="50px"
+              height="50px"
+              marginRight="40px"
+              fontWeight="600"
+              borderRadius="12px"
+              border="none"
+            >
+              2
+            </Button>
+            <Text to="#">
+              On the main menu, click
+              <span style={{ fontWeight: "700" }}> Workspace</span> and select{" "}
+              <span style={{ fontWeight: "750" }}>Subscription. </span>
+            </Text>
+          </HStack>
+
+          <HStack mt="30px">
+            <Button
+              background="#e7edfc"
+              color="#2e4497"
+              fontSize="25px"
+              width="50px"
+              height="50px"
+              marginRight="40px"
+              fontWeight="600"
+              borderRadius="12px"
+              border="none"
+            >
+              3
+            </Button>
+            <Text to="#">
+              On the subscription page click
+              <span style={{ fontWeight: "700" }}> Upgrade Now.</span>
+            </Text>
+          </HStack>
+
+          <HStack mt="30px">
+            <Button
+              background="#e7edfc"
+              color="#2e4497"
+              fontSize="25px"
+              width="50px"
+              height="50px"
+              marginRight="40px"
+              fontWeight="600"
+              borderRadius="12px"
+              border="none"
+            >
+              4
+            </Button>
+            <Text to="#">
+              Enter your team size, select subscription plan, and click{" "}
+              <span style={{ fontWeight: "700" }}> Proceed To Checkout.</span>
+            </Text>
+          </HStack>
+
+          <HStack mt="30px">
+            <Button
+              background="#e7edfc"
+              color="#2e4497"
+              fontSize="25px"
+              width="50px"
+              height="50px"
+              marginRight="40px"
+              fontWeight="600"
+              borderRadius="12px"
+              border="none"
+            >
+              5
+            </Button>
+            <Text to="#">
+              On the shopping cart page enter your Billing Information and
+              select Payment Options.
+            </Text>
+          </HStack>
+
+          <HStack mt="30px">
+            <Button
+              background="#e7edfc"
+              color="#2e4497"
+              fontSize="25px"
+              width="50px"
+              height="50px"
+              marginRight="40px"
+              fontWeight="600"
+              borderRadius="12px"
+              border="none"
+            >
+              6
+            </Button>
+            <Text to="#">
+              {" "}
+              Click
+              <span style={{ fontWeight: "700" }}> Continue </span>to place an
+              order.
+            </Text>
+          </HStack>
+        </Box>
+      </Box>
+
       {/* Other Questions Section */}
       <Box borderTop="1px solid #e2e6eb" p="3.1875rem 0 2.5rem">
         <Heading
@@ -151,7 +297,7 @@ const Pricing = () => {
             </Text>
           </Box>
 
-          <Box mt="30px" display="flex">
+          <HStack mt="30px">
             <Button
               background="#e3f8e7"
               color="#127924"
@@ -165,12 +311,18 @@ const Pricing = () => {
             >
               A
             </Button>
-            <Text to="#">
+            <Text
+              border="1px solid #f8f9fa"
+              borderRadius="0 12px 12px 12px"
+              p=".92rem 1.25rem"
+              position="relative"
+              backgroundColor="#f8f9fa"
+            >
               You can save money with our volume discount for teams of 40+
               users. Learn more on{" "}
               <span style={{ color: "#5ea0f5" }}> FAQ.</span>
             </Text>
-          </Box>
+          </HStack>
 
           <Box mt="30px" fontWeight="600" display="flex">
             <Button
@@ -195,7 +347,7 @@ const Pricing = () => {
             </Text>
           </Box>
 
-          <Box mt="30px" display="flex">
+          <HStack mt="30px">
             <Button
               background="#e3f8e7"
               color="#127924"
@@ -209,7 +361,13 @@ const Pricing = () => {
             >
               A
             </Button>
-            <Text>
+            <Text
+              border="1px solid #f8f9fa"
+              borderRadius="0 12px 12px 12px"
+              p=".92rem 1.25rem"
+              position="relative"
+              backgroundColor="#f8f9fa"
+            >
               We offer special{" "}
               <span style={{ color: "#5ea0f5" }}>
                 pricing options for non-profit
@@ -218,7 +376,7 @@ const Pricing = () => {
               <span style={{ color: "#5ea0f5" }}> contact</span> team
             </Text>
             .
-          </Box>
+          </HStack>
 
           <Box mt="30px" fontWeight="600" display="flex">
             <Button
@@ -244,7 +402,7 @@ const Pricing = () => {
             </Text>
           </Box>
 
-          <Box mt="30px" display="flex">
+          <HStack mt="30px">
             <Button
               background="#e3f8e7"
               color="#127924"
@@ -258,11 +416,17 @@ const Pricing = () => {
             >
               A
             </Button>
-            <Text to="#">
+            <Text
+              border="1px solid #f8f9fa"
+              borderRadius="0 12px 12px 12px"
+              p=".92rem 1.25rem"
+              position="relative"
+              backgroundColor="#f8f9fa"
+            >
               Please contact our sales department at
               <span style={{ color: "#5ea0f5" }}> sales@tmetric.com</span>
             </Text>
-          </Box>
+          </HStack>
         </Box>
       </Box>
 
