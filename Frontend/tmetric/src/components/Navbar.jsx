@@ -30,13 +30,21 @@ const Navbar = () => {
                   </Heading>
                   <div className="details">
                     <div className="detail">
-                      <Heading size={"sm"} lineHeight="2rem" className='heading'>
+                      <Heading
+                        size={"sm"}
+                        lineHeight="2rem"
+                        className="heading"
+                      >
                         Industry
                       </Heading>
                       <p>Made for all industries.Check benefits og usage</p>
                     </div>
                     <div className="detail">
-                      <Heading size={"sm"} lineHeight="2rem" className='heading'>
+                      <Heading
+                        size={"sm"}
+                        lineHeight="2rem"
+                        className="heading"
+                      >
                         Customers
                       </Heading>
                       <p>
@@ -55,7 +63,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -70,7 +79,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -85,7 +95,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -100,7 +111,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -117,7 +129,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -132,7 +145,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -172,7 +186,11 @@ const Navbar = () => {
                   </Heading>
                   <div className="details">
                     <div className="detail">
-                      <Heading size={"sm"} lineHeight="2rem" className='heading' >
+                      <Heading
+                        size={"sm"}
+                        lineHeight="2rem"
+                        className="heading"
+                      >
                         Browser Extensions
                       </Heading>
                       <p>
@@ -181,7 +199,11 @@ const Navbar = () => {
                       </p>
                     </div>
                     <div className="detail">
-                      <Heading size={"sm"} lineHeight="2rem" className='heading'>
+                      <Heading
+                        size={"sm"}
+                        lineHeight="2rem"
+                        className="heading"
+                      >
                         Mobile apps
                       </Heading>
                       <p>
@@ -190,7 +212,11 @@ const Navbar = () => {
                       </p>
                     </div>
                     <div className="detail">
-                      <Heading size={"sm"} lineHeight="2rem" className='heading'>
+                      <Heading
+                        size={"sm"}
+                        lineHeight="2rem"
+                        className="heading"
+                      >
                         Desktop apps
                       </Heading>
                       <p>
@@ -210,7 +236,7 @@ const Navbar = () => {
                         size={"xs"}
                         lineHeight="2rem"
                         display={"inline-flex"}
-                        className='heading'
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -227,7 +253,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -244,7 +271,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -261,7 +289,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -278,7 +307,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -298,7 +328,8 @@ const Navbar = () => {
                       <Heading
                         size={"xs"}
                         lineHeight="2rem"
-                        display={"inline-flex"} className='heading'
+                        display={"inline-flex"}
+                        className="heading"
                       >
                         {" "}
                         <img
@@ -327,7 +358,7 @@ const Navbar = () => {
             </div>
           </li>
           <li>
-            <a href="#">Pricing</a>
+            <NavLink to="/pricing">Pricing</NavLink>
           </li>
           <li>
             <a href="#">Support</a>
