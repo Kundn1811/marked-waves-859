@@ -365,6 +365,7 @@ const Navbar = () => {
           </li>
           <li>
           <NavLink to="/blog">Blog</NavLink>
+
           </li>
         </ul>
         <div className="authBtn">
@@ -376,7 +377,6 @@ const Navbar = () => {
             _hover=""
           >
             <NavLink to="/auth/signin">Log In</NavLink>
-            
           </Button>
           <Button
             display={{ base: "none", md: "inline-flex" }}
