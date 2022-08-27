@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Allroutes from './routes/Allroutes';
 import Footer from "./components/Footer";
+import Dashboard from './pages/Dashboard';
 
 
 
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <Allroutes />
       <Footer />
+      <Dashboard/>
     </div>
   );
 }

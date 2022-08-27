@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../Styles/projectbody.module.css'
 import { IoIosSearch } from "react-icons/io";
 import { TiArrowUp } from "react-icons/ti";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { useNavigate } from 'react-router-dom';
+import Project from '../components/Project';
 
 function ProjectBody() {
+    const [options, setOptions] = useState(false);
+
     const navigate = useNavigate()
   return (
     <div className={styles.main_container}>
@@ -101,7 +104,15 @@ function ProjectBody() {
             </div>
             <div></div>
           </div>
-
+          {newArray?.map((el, index) => (
+            <Project
+              key={index}
+              {...el}
+              options={options}
+              setOptions={setOptions}
+              index={index}
+            />
+          ))}
 
 
 
