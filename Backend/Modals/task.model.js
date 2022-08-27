@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema({
-    taskName : {type:String, required : true},
-    assignee : {type:String, required : true},
-    projectName: {type:String, required : true},
+    taskName : {type:String},
+    assignee : {type:String},
+    projectName: {type:String},
     creater : "String",
     dueDate : String,
     workSpaceId:String,

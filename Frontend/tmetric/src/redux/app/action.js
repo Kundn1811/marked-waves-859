@@ -162,7 +162,7 @@ export const updateTask = (payload) => (dispatch) => {
 
 export const deleteTask = (payload) => (dispatch) => {
     dispatch(taskDeleteRequest())
-    return axios.patch("http://localhost:8080/task/delete",payload,{
+    return axios.delete("http://localhost:8080/task/delete",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }

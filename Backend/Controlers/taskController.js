@@ -4,7 +4,7 @@ const authentication  = require("../Middleware/authentication")
 const task = Router();
 
 task.get("/",authentication, async(req,res)=>{
-    const tasks = new TaskModel.find({})
+    const tasks = await TaskModel.find({})
     return res.send({tasks})
 })
 task.post("/create",authentication,async(req,res)=>{
