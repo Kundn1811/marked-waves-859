@@ -65,12 +65,12 @@ import {
                   </Button>
                </Box>
                </Stack>
-               <div className={styles.gridDiv}>
+               {/* <div className={styles.gridDiv}>
                    {data?.map((elem,index)=>(
                     <Image key={index} src={elem.img} className="gridElem" />
                    
                    ))}
-               </div>
+               </div> */}
             
     </div>
     <div className={styles.RightImageDiv}>
