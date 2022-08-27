@@ -5,7 +5,7 @@ import {SearchIcon} from "@chakra-ui/icons"
 import NoResult from "./NoResult"
 import NewTaskLayout from './NewTaskLayout'
 import {useDispatch,useSelector} from "react-redux"
-import { createTask, getTasks } from '../../redux/app/action'
+import { createTask, getTasks ,updateTask,deleteTask} from '../../redux/app/action'
 import { GET_TASKS_SUCCESS, TASK_CREATE_SUCCESS } from '../../redux/app/actionType'
 
 
@@ -56,15 +56,15 @@ const TaskContHead = () => {
         .catch((err) =>console.log(err))
     }
 
-    const updateTask = () => {
-        dispatch(update({
-            taskName,
-            creater,assignee,project
-        }))
-    }
-    const deleteParticularTask = () => {
-        dispatch(deleteTask({taskId}))
-    }
+    // const updateOne = () => {
+    //     dispatch(updateTask({
+    //         taskName,
+    //         creater,assignee,project
+    //     }))
+    // }
+    // const deleteParticularTask = () => {
+    //     dispatch(deleteTask({taskId}))
+    // }
 
 
   return (
