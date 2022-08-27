@@ -44,7 +44,7 @@ export function CustomControlableInput() {
         isPreviewFocusable={false}
       >
        <Flex direction={"row"} gap={5}>
-       <EditablePreview border={"solid red 2px"}/>
+       <EditablePreview />
         {/* Here is the custom input */}
         <Input as={EditableInput} border="solid red 2px"/>
       

@@ -127,9 +127,9 @@ export const createWorkSpace = (payload) => (dispatch) => {
 
 //=================================TASKS=================================
 
-export const getTasks = (payload) => (dispatch) => {
+export const getTasks = () => (dispatch) => {
     dispatch(getTasksRequest())
-    return axios.post("http://localhost:8080/tasks",payload,{
+    return axios.get("http://localhost:8080/task",{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
