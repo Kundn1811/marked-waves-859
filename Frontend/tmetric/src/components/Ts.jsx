@@ -15,6 +15,7 @@ import { RiPagesLine } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
 import { SiMicrosoftteams } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function Ts() {
   return (
@@ -51,7 +52,7 @@ function Ts() {
     <AccordionPanel pb={4}>
         <div style={{display:"flex",gap:"10px",marginLeft:"30px"}}>
             <span><AiFillFolder /></span>
-            <span style={{margin:"-3px 0 0 0px"}}>Projects</span>
+          <Link to='/app/project'><span style={{margin:"-3px 0 0 0px"}}>Projects</span></Link>
         </div>
         <div style={{display:"flex",gap:"10px",margin:" 13px 0 0 30px"}}>
             <span><BiBuildings/></span>
