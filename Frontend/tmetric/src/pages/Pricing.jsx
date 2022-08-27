@@ -4,11 +4,14 @@ import {
   Text,
   Button,
   Link,
+  Switch,
   HStack,
   Input,
   List,
   ListItem,
   ListIcon,
+  FormLabel,
+  FormControl,
 } from "@chakra-ui/react";
 import {
   Slider,
@@ -19,9 +22,13 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
+import "../App.css";
+import { useEffect } from "react";
 
 const Pricing = () => {
   const [teamSize, setTeamSize] = useState(1);
+  const [subscriptionType, setSubscriptionType] = useState("Annually");
+  const [displayType, setdisplayType] = useState(false);
 
   const options = [
     {
@@ -102,6 +109,25 @@ const Pricing = () => {
     },
   ];
 
+  const onSwitchToggle = (e) => {
+    console.log(e.target.checked);
+    console.log("displayType", displayType);
+    console.log("subscriptionType", subscriptionType);
+    e.target.checked
+      ? setSubscriptionType("Monthly")
+      : setSubscriptionType("Annually");
+  };
+
+  useEffect(() => {
+    if (subscriptionType === "Monthly") {
+      setdisplayType(true);
+      console.log("year");
+    } else {
+      setdisplayType(false);
+      console.log("month");
+    }
+  }, [subscriptionType, displayType]);
+
   return (
     <Box>
       <Box bg="#e8edff" textAlign="center" mt="3.7rem" minH="356px">
@@ -129,7 +155,38 @@ const Pricing = () => {
           borderRadius="12px"
           p="1.1rem 2rem"
         >
-          <Text fontSize="1.25rem" fontWeight="500" mr="10px">
+          <FormControl display="flex" alignItems="center" w="fit-content">
+            <FormLabel
+              fontSize="1.25rem"
+              fontWeight="500"
+              htmlFor="subscription-type"
+              mb="0"
+            >
+              Monthly
+            </FormLabel>
+            <Switch
+              id="subscription-type"
+              // isChecked={false}
+              value={subscriptionType}
+              onChange={onSwitchToggle}
+            />
+            <FormLabel
+              fontSize="1.25rem"
+              fontWeight="500"
+              htmlFor="subscription-type"
+              mb="0"
+              ml="15px"
+            >
+              Annually
+            </FormLabel>
+          </FormControl>
+          <Text
+            fontSize="1.25rem"
+            fontWeight="500"
+            pl="15px"
+            mr="10px"
+            borderLeft="1px solid #e2e6eb"
+          >
             Team Size
           </Text>
           <Input
@@ -156,7 +213,7 @@ const Pricing = () => {
             max={200}
             defaultValue={teamSize}
             onChangeEnd={(val) => setTeamSize(val)}
-            w="79%"
+            w="55%"
           >
             <SliderTrack>
               <SliderFilledTrack />
@@ -179,13 +236,24 @@ const Pricing = () => {
               p="0.4rem 1rem .8rem"
               m="1.5rem 0"
             >
-              <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
-                ${" "}
-                <span style={{ fontSize: "3rem", color: "#212529" }}>
-                  {7 * Number(teamSize)}
-                </span>
-                /month
-              </Text>
+              {displayType && (
+                <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                  ${" "}
+                  <span style={{ fontSize: "3rem", color: "#212529" }}>
+                    {70 * Number(teamSize)}
+                  </span>
+                  /year
+                </Text>
+              )}
+              {!displayType && (
+                <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                  ${" "}
+                  <span style={{ fontSize: "3rem", color: "#212529" }}>
+                    {7 * Number(teamSize)}
+                  </span>
+                  /month
+                </Text>
+              )}
             </Box>{" "}
             <List spacing={3} textAlign="left">
               {options.map((elem) => (
@@ -214,13 +282,24 @@ const Pricing = () => {
               p="0.4rem 1rem .8rem"
               m="1.5rem 0"
             >
-              <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
-                ${" "}
-                <span style={{ fontSize: "3rem", color: "#212529" }}>
-                  {5 * Number(teamSize)}
-                </span>
-                /month
-              </Text>
+              {displayType && (
+                <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                  ${" "}
+                  <span style={{ fontSize: "3rem", color: "#212529" }}>
+                    {50 * Number(teamSize)}
+                  </span>
+                  /year
+                </Text>
+              )}
+              {!displayType && (
+                <Text color="#4c5157" fontSize="1.25rem" fontWeight="500">
+                  ${" "}
+                  <span style={{ fontSize: "3rem", color: "#212529" }}>
+                    {5 * Number(teamSize)}
+                  </span>
+                  /month
+                </Text>
+              )}
             </Box>
             <List spacing={3} textAlign="left">
               {options.map((elem) => (
