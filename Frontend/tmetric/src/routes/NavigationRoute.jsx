@@ -4,7 +4,7 @@ import AppRoute from './AppRoute'
 import AuthRoute from './AuthRoute'
 import FrontRoute from './FrontRoute'
 
-const Dummy = () => {
+const NavigationRoute = () => {
   return (
     <div>
         <Routes>
@@ -18,4 +18,4 @@ const Dummy = () => {
   )
 }
 
-export default Dummy
+export default NavigationRoute
