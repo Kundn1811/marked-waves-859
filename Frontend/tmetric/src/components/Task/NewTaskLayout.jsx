@@ -6,16 +6,38 @@ import {
     List,ListIcon,ListItem,
     EditablePreview,
     Flex,
-    Select
+    Select,
+    Button
 
   } from '@chakra-ui/react'
   import {CheckIcon,CloseIcon,EditIcon} from "@chakra-ui/icons"
   import styles from "../../Styles/NewtaskLaout.module.css"
-import { CustomControlableInput } from './CustomControllableInput'
-const NewTaskLayout = ({tasks,assignee}) => {
+  import { CustomControlableInput } from './CustomControllableInput'
+  import { updateTask,deleteTask, getTasks } from '../../redux/app/action'
+  import { useDispatch } from 'react-redux'
+import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../../redux/app/actionType'
+  const NewTaskLayout = ({taskList}) => {
+    const [taskName,setTaskName] = React.useState("")
+    const [id,setId] = React.useState({})
+    const [show,setShow] = React.useState(false)
+    const [tasks,setTasks]=React.useState(taskList)
+    const dispatch = useDispatch()
 
     const [start,setStart] = React.useState(false);
     const [completed,setCompleted] = React.useState(false)
+    React.useEffect(()=>{
+        dispatch(getTasks({}))
+        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTasks(res.payload.tasks) : console.log("no tasks"))
+    },[taskList])
+
+    const update = (toUpdate) => {
+        dispatch(updateTask(toUpdate))
+        .then((res)=>res.type==TASK_UPDATE_SUCCESS && res.payload.message=="task updated successfully."? dispatch(getTasks({})).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
+    }
+    const deleteT = () => {
+        dispatch(deleteTask(id))
+        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=="task deleted successfully." ? dispatch(getTasks({})).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
+    }
 
 
     
@@ -27,12 +49,15 @@ const NewTaskLayout = ({tasks,assignee}) => {
             Projects
            
                {tasks?.map((elem)=>
-                 <ListItem px={5} bg="#dddd" borderRadius={5} margin={2}>
+                 <ListItem px={5} bg="#dddd" borderRadius={5} margin={2} >
                               <Flex>
-                              <ListIcon as={CheckIcon} marginTop={2} color='green.500' />
+                              <ListIcon as={CheckIcon} marginTop={2} color='green.500' onClick={()=>setId({_id:elem._id})} />
                               <Editable width={"100%"} defaultValue={elem.taskName} px={2}>
                               <EditablePreview width={"100%"} />
-                              <EditableInput />
+                              <EditableInput 
+                                    onChange={(e)=>setTaskName(e.target.value)}
+                                    onKeyDownCapture={(e)=>{ if(e.key=="Enter") update({taskName,_id:elem._id})}}
+                                />
                               </Editable>
                           </Flex>
                     </ListItem>
@@ -71,8 +96,9 @@ const NewTaskLayout = ({tasks,assignee}) => {
 
                     <div style={{display:"flex",gap:"15px",margin:"15px "}}>
                         <i style={{fontSize:"20px"}} class="fa-solid fa-share-nodes"></i>
-                        <i style={{fontSize:"20px"}} class="fa-solid fa-ellipsis"></i>
-                        <i style={{fontSize:"20px"}} class="fa-solid fa-arrow-right-long"></i>
+                        {show ? <Button onClick={deleteT} > Delete </Button> :  <i style={{fontSize:"20px"}} class="fa-solid fa-ellipsis" onClick={()=>setShow(!show)}></i>}
+                        <i style={{fontSize:"20px"}} class="fa-solid fa-arrow-right-long" onClick={()=>setShow(!show)}></i>
+                       
                     </div>
 
  
@@ -81,7 +107,7 @@ const NewTaskLayout = ({tasks,assignee}) => {
 
 
             <div className={styles.taskNameInput}>
-                <Editable width={"100%"} defaultValue={assignee} px={2}>
+                <Editable width={"100%"} defaultValue="Assignee" px={2}>
                 <EditablePreview width={"100%"} />
                 <EditableInput />
                 </Editable>
@@ -107,7 +133,7 @@ const NewTaskLayout = ({tasks,assignee}) => {
                     <i style={{marginTop:"12px"}}  class="fa-solid fa-user-tie"></i>
                     <div>
                         <Select placeholder='Unassigned'>
-                            {tasks?.map((elem,index)=><option key={index} value={elem.creater}>{elem.creater}</option>)}
+                            {tasks?.map((elem,index)=><option key={index} value={elem.assignee}>{elem.assignee}</option>)}
                         </Select>
                     </div>
                     </div>

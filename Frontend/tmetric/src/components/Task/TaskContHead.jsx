@@ -16,7 +16,7 @@ const TaskContHead = () => {
     const [creater,SetCreater] = React.useState("")
     const [taskName,setTaskName] = React.useState("")
     const [project,setProject] = React.useState("")
-    const [tasks,setTasks] = React.useState([])
+    const [taskList,setTaskList] = React.useState([])
 
     const handleShow = () => setShow(true)
 
@@ -38,27 +38,16 @@ const TaskContHead = () => {
     const dispatch = useDispatch()
     React.useEffect(()=>{
         dispatch(getTasks({}))
-        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTasks(res.payload.tasks) : console.log("no tasks"))
+        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTaskList(res.payload.tasks) : console.log("no tasks"))
     },[assignee,creater,taskName,project])
-    console.log(tasks)
+   
     
 
     const PostNewTask = ()=>{
-        dispatch(createTask({assignee:"",creater:"",taskName:"",project:""}))
-        .then((res)=> console.log(res))
+        dispatch(createTask({assignee:"",creater:"",taskName:"",projectName:""}))
+        .then((res)=> res.type === 'TASK_CREATE_SUCCESS'  && res.payload.message == "task created successfully." ? dispatch(getTasks()).then((res)=>setTaskList(res.payload.tasks)).catch((err)=>console.log(err)) : console.log("err"))
         .catch((err) =>console.log(err))
     }
-
-    // const updateTask = () => {
-    //     dispatch(update({
-    //         taskName,
-    //         creater,assignee,project
-    //     }))
-    // }
-    // const deleteParticularTask = () => {
-    //     dispatch(deleteTask())
-    // }
-
 
   return (
     <div className={styles.TaskHeadContWrapper}>
@@ -101,7 +90,7 @@ const TaskContHead = () => {
                      </div>
                      <div style={{color:"#777e85"}}>Members</div>
                     {
-                        tasks?.map((elem,index)=>(
+                        taskList?.map((elem,index)=>(
                             <div onClick={()=>{
                                     setAssignee(elem.assignee)
                                     setShow(false)
@@ -123,7 +112,7 @@ const TaskContHead = () => {
 
 
         <div className={styles.FilterWrapper}>
-        <div className={styles.filterButton}>
+        {/* <div className={styles.filterButton}>
             <Select >
                 <option value='Project : All'>
                     Client : All</option>
@@ -166,7 +155,7 @@ const TaskContHead = () => {
                 <option value='Any'>
                     Creator : Any</option>
                 <option value='me'>Me</option>
-                {tasks.assignee?.map((elem)=>(
+                {taskList?.map((elem)=>(
                     <option value={elem}>{elem}</option>
                 ))}
             </Select>
@@ -182,7 +171,7 @@ const TaskContHead = () => {
             </div>
             <div className={styles.filterButton}>
               <button style={{marginTop:"2px",border:"solid #a1a7b2 1px",padding:"5px",borderRadius:"5px"}}>Clear Filters</button>
-            </div>
+            </div> */}
         </div>
 
     {/*==========================New Task button Section============================== */}
@@ -219,7 +208,7 @@ const TaskContHead = () => {
             </div>
             </div>
             {
-                !tasks.length ? <NoResult /> : <NewTaskLayout tasks={tasks} assignee={assignee} />
+                !taskList.length ? <NoResult /> : <NewTaskLayout taskList={taskList} assignee={assignee} />
             }
         </div>
 
