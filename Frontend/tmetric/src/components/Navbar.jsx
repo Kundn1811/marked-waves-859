@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav>
       <div className="wrapper">
         <div className="logo">
-          <a href="#">
+          <a href="/">
             <img
               src="https://app.tmetric.com/images/tmetric_logo_and_text.svg"
               alt=""
@@ -361,10 +361,10 @@ const Navbar = () => {
             <NavLink to="/pricing">Pricing</NavLink>
           </li>
           <li>
-            <a href="#">Support</a>
+            <a href="/support">Support</a>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a href="/blog">Blog</a>
           </li>
         </ul>
         <div className="authBtn">
@@ -376,7 +376,6 @@ const Navbar = () => {
             _hover=""
           >
             <NavLink to="/auth/signin">Log In</NavLink>
-            
           </Button>
           <Button
             display={{ base: "none", md: "inline-flex" }}

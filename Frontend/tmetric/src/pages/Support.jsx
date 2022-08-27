@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Support.module.css";
+import style from "../Styles/Support.module.css";
 import { IoMdSearch } from "react-icons/io";
 import { BsFillArrowUpRightSquareFill } from "react-icons/bs";
 const Support = () => {
