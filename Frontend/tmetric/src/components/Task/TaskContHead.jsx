@@ -16,6 +16,11 @@ const TaskContHead = () => {
     const [taskName,setTaskName] = React.useState("")
     const [project,setProject] = React.useState("")
     const [tasks,setTasks] = React.useState([])
+
+
+    const handleShow = () => setShow(true)
+
+
     const members = [
         "Rohit",
         "Aaro",
@@ -34,11 +39,10 @@ const TaskContHead = () => {
     const sources = ["a","b","c"]
     const status = ["Open","Completed"]
  
-    const handleShow = () => setShow(true)
+    
 
 
     const dispatch = useDispatch()
-    const userId = ""
     React.useEffect(()=>{
         dispatch(getTasks({}))
         .then((res)=>{
