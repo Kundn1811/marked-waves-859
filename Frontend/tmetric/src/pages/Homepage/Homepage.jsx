@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Navbar from "../../components/Navbar";
 import AwardList from "./Sections/AwardList";
 import EnsureProfit from "./Sections/EnsureProfit";
 import FeaturesInfo from "./Sections/FeaturesInfo";
@@ -11,6 +12,7 @@ import MonitorTime from "./Sections/MonitorTime";
 const Homepage = () => {
   return (
     <Fragment>
+      <Navbar/>
       <HomepageHeader />
       <AwardList />
       <FeaturesInfo />

@@ -375,7 +375,7 @@ const Navbar = () => {
             href={"#"}
             _hover=""
           >
-            <NavLink to="/signin">Log In</NavLink>
+            <NavLink to="/auth/signin">Log In</NavLink>
             
           </Button>
           <Button
@@ -392,7 +392,7 @@ const Navbar = () => {
               color: "white",
             }}
           >
-            <NavLink to="/signup">Sign Up</NavLink>
+            <NavLink to="/auth/signup">Sign Up</NavLink>
           </Button>
         </div>
       </div>
