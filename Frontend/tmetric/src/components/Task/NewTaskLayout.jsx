@@ -18,6 +18,7 @@ import {
 import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../../redux/app/actionType'
   const NewTaskLayout = ({taskList}) => {
     const [taskName,setTaskName] = React.useState("")
+    const [projectName,setProjectName] = React.useState("")
     const [id,setId] = React.useState({})
     const [show,setShow] = React.useState(false)
     const [tasks,setTasks]=React.useState(taskList)
@@ -26,17 +27,18 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
     const [start,setStart] = React.useState(false);
     const [completed,setCompleted] = React.useState(false)
     React.useEffect(()=>{
-        dispatch(getTasks({}))
+        dispatch(getTasks())
         .then((res)=>res.type==GET_TASKS_SUCCESS ? setTasks(res.payload.tasks) : console.log("no tasks"))
-    },[taskList])
+    },[taskList,taskName])
 
     const update = (toUpdate) => {
         dispatch(updateTask(toUpdate))
-        .then((res)=>res.type==TASK_UPDATE_SUCCESS && res.payload.message=="task updated successfully."? dispatch(getTasks({})).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
+        .then((res)=>res.type==TASK_UPDATE_SUCCESS && res.payload.message=="task updated successfully."? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
     }
     const deleteT = () => {
+        console.log(id)
         dispatch(deleteTask(id))
-        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=="task deleted successfully." ? dispatch(getTasks({})).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
+        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=='task deleted successfully.' ? dispatch(getTasks({})).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
     }
 
 
@@ -51,7 +53,10 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
                {tasks?.map((elem)=>
                  <ListItem px={5} bg="#dddd" borderRadius={5} margin={2} >
                               <Flex>
-                              <ListIcon as={CheckIcon} marginTop={2} color='green.500' onClick={()=>setId({_id:elem._id})} />
+                              <ListIcon as={CheckIcon} marginTop={2} color='green.500' onClick={()=>{
+                                setId({_id:elem._id});
+                                setTaskName(elem.taskName)}
+                              } />
                               <Editable width={"100%"} defaultValue={elem.taskName} px={2}>
                               <EditablePreview width={"100%"} />
                               <EditableInput 
@@ -95,9 +100,12 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
                     </div>
 
                     <div style={{display:"flex",gap:"15px",margin:"15px "}}>
-                        <i style={{fontSize:"20px"}} class="fa-solid fa-share-nodes"></i>
-                        {show ? <Button onClick={deleteT} > Delete </Button> :  <i style={{fontSize:"20px"}} class="fa-solid fa-ellipsis" onClick={()=>setShow(!show)}></i>}
-                        <i style={{fontSize:"20px"}} class="fa-solid fa-arrow-right-long" onClick={()=>setShow(!show)}></i>
+                        <i style={{fontSize:"20px"}} className="fa-solid fa-share-nodes"></i>
+                        {show ? <Button onClick={()=>{
+                            setShow(!show);
+                            deleteT(id)}
+                        }> Delete </Button> :  <i style={{fontSize:"20px"}} className="fa-solid fa-ellipsis" onClick={()=>setShow(!show)}></i>}
+                        <i style={{fontSize:"20px"}} className="fa-solid fa-arrow-right-long" onClick={()=>setShow(!show)}></i>
                        
                     </div>
 
@@ -107,9 +115,12 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
 
 
             <div className={styles.taskNameInput}>
-                <Editable width={"100%"} defaultValue="Assignee" px={2}>
+                <Editable width={"100%"} defaultValue={taskName ? taskName : " Update Task Name"} px={2}>
                 <EditablePreview width={"100%"} />
-                <EditableInput />
+                <EditableInput 
+                    onChange={(e)=>setTaskName(e.target.value)}
+                    onKeyDownCapture={(e)=>{if(e.key=="Enter") update({taskName})}}
+                />
                 </Editable>
             </div>
 
@@ -122,7 +133,10 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
                     <div>
                        <Editable width={"100%"} defaultValue='Write a Task name' px={2}>
                             <EditablePreview width={"100%"} />
-                            <EditableInput />
+                            <EditableInput 
+                               onChange={(e)=>setProjectName(e.target.value)}
+                               onKeyDownCapture={(e)=>{ if(e.key=="Enter") update({projectName},id)}}
+                            />
                        </Editable>
                     </div>
                     </div>
@@ -130,9 +144,13 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
                 <div style={{display:"flex",gap:'35px',height:"45px"}}>
                     <div style={{marginTop:"7px"}}>Assignee</div>
                     <div style={{display:"flex",gap:"10px"}}>
-                    <i style={{marginTop:"12px"}}  class="fa-solid fa-user-tie"></i>
+                    <i style={{marginTop:"12px"}}  className="fa-solid fa-user-tie"></i>
                     <div>
-                        <Select placeholder='Unassigned'>
+                        <Select placeholder='Unassigned'
+                        onChange={(e)=>{
+                            update({assignee:e.target.value},id)
+                        }}
+                        >
                             {tasks?.map((elem,index)=><option key={index} value={elem.assignee}>{elem.assignee}</option>)}
                         </Select>
                     </div>
@@ -170,7 +188,7 @@ import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../
                <div>Add Tag</div>
             </div>
             <div className={styles.LowerActtagDiv}>
-               <div><i class="fa-solid fa-chart-column"></i></div>
+               <div><i className="fa-solid fa-chart-column"></i></div>
                <div>Activity</div>
             </div>
         </div>

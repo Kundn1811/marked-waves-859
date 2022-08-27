@@ -161,6 +161,7 @@ export const updateTask = (payload) => (dispatch) => {
 }
 
 export const deleteTask = (payload) => (dispatch) => {
+    // console.log(payload)
     dispatch(taskDeleteRequest())
     return axios.delete("http://localhost:8080/task/delete",payload,{
         headers : {
