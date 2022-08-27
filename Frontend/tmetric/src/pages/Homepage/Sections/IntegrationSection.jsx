@@ -11,6 +11,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import React from "react";
+import { BsArrowRightShort } from "react-icons/bs";
 
 const IntegrationSection = () => {
   const integrationList = [
@@ -98,9 +99,13 @@ const IntegrationSection = () => {
           color="#3070f0"
           fontWeight={500}
           textDecoration="none"
+          lineHeight="initial"
           _hover={{ color: "#0053a6" }}
         >
-          Explore All Integrations →
+          <Box fontSize="18px" display="flex">
+            <Text>Explore All Integrations</Text>
+            <BsArrowRightShort fontSize="25px" />
+          </Box>
         </Link>
       </HStack>
       <Wrap spacing="25px" justify="center" mt="2rem" maxW="1296px">

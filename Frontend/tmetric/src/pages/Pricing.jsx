@@ -110,9 +110,9 @@ const Pricing = () => {
   ];
 
   const onSwitchToggle = (e) => {
-    console.log(e.target.checked);
-    console.log("displayType", displayType);
-    console.log("subscriptionType", subscriptionType);
+    // console.log(e.target.checked);
+    // console.log("displayType", displayType);
+    // console.log("subscriptionType", subscriptionType);
     e.target.checked
       ? setSubscriptionType("Monthly")
       : setSubscriptionType("Annually");
