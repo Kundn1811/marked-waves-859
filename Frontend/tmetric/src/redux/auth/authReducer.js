@@ -29,6 +29,7 @@ export const authReducer = (state = initState,{type,payload}) => {
             }
         }
         case SIGNUP_SUCCESS : {
+        saveData("tmetricUse",payload)
             return {
                ...state,
                isLoading:false,

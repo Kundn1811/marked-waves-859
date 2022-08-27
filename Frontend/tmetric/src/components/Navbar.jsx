@@ -10,12 +10,12 @@ const Navbar = () => {
     <nav>
       <div className="wrapper">
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img
               src="https://app.tmetric.com/images/tmetric_logo_and_text.svg"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <ul className="nav-links">
           <li>
@@ -30,13 +30,13 @@ const Navbar = () => {
                   </Heading>
                   <div className="details">
                     <div className="detail">
-                      <Heading
+                   <Link to="/industry">  <Heading
                         size={"sm"}
                         lineHeight="2rem"
                         className="heading"
                       >
                         Industry
-                      </Heading>
+                      </Heading></Link> 
                       <p>Made for all industries.Check benefits og usage</p>
                     </div>
                     <div className="detail">
@@ -361,10 +361,11 @@ const Navbar = () => {
             <NavLink to="/pricing">Pricing</NavLink>
           </li>
           <li>
-            <NavLink to="/support">Support</NavLink>
+          <NavLink to="/support">Support</NavLink>
           </li>
           <li>
-            <NavLink to="/blog">Blog</NavLink>
+          <NavLink to="/blog">Blog</NavLink>
+
           </li>
         </ul>
         <div className="authBtn">

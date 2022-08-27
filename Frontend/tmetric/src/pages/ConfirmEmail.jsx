@@ -31,7 +31,7 @@ const ConfirmEmail = () => {
 
     React.useEffect(()=>{
         setTimeout(()=>{ 
-            navigate("/chooseworkspace")
+            navigate("/auth/chooseworkspace")
         },5000)
     },[resend])
 

@@ -10,22 +10,26 @@ import SetupAlmostComp from "../pages/SetupAlmostComp";
 import IntegrateTTWorkFlowPage from "../pages/IntegrateTTWorkflowPage";
 import ErrorPage from "../pages/ErrorPage";
 import Pricing from "../pages/Pricing";
-import { Divider } from "@chakra-ui/react";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+import Industry from "../pages/industry/Industry"
 import Support from "../pages/Support";
-import Blog from "../pages/Blog";
-const FrontRoute = () => {
+import Blog from "../pages/Blog"
+const  FrontRoute = () => {
   return (
     <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
-      <Footer />
+      <Navbar/>
+    <Routes>
+      <Route path="/" element={<Homepage />} />  
+      <Route path="/pricing" element={<Pricing />} />
+      <Route path="/industry" element={<Industry />} />
+      <Route path="/support" element={< Support/>} />
+      <Route path="/blog" element={<Blog/>} />
+    </Routes>
+    <Footer/>
+
     </div>
   );
 };

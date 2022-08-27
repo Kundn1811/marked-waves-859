@@ -24,7 +24,9 @@ import {
                 p={8}
                 >
                  
-                  <Button className={styles.button} bg="#2277e5">
+                  <Button className={styles.button} bg="#2277e5" onClick={()=>{
+                     navigate("/app/project")
+                  }}>
                       Continue
                   </Button>
                </Box>

@@ -114,7 +114,7 @@ function SideBar({showAdd}) {
               onClick={() => sBar("task")}
             >
               <BiTask style={{ fontSize: "25px" }} />
-              <span>Tasks</span>
+              <Link to='/app/task'><span>Tasks</span></Link>
             </div>
             <hr></hr>
             <Ts showAdd={showAdd} />

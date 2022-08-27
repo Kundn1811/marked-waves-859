@@ -61,7 +61,7 @@ const ChooseWorkSpace = () => {
                          <IoAdd fontSize={25} color={"green"}  />
                       </Box>
                       <Flex direction={"column"} onClick={()=>{
-                        navigate("/workspacepage")
+                        navigate("/auth/workspacepage")
                       }} >
                         <Heading fontWeight={400} fontSize={20}  color="black">Create Your Workspace</Heading>
                         <Text>For company owners and managers</Text>

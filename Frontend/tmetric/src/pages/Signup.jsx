@@ -46,7 +46,7 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
         else if(!cond) return alert("please acept the terms and condition")
         else{
             dispatch( signup({name,email,password}))
-            .then((res)=>res.type===SIGNUP_SUCCESS && res.payload.message==="Account created successfully." ? alert(res.payload.message) & navigate("/confirmemail") : alert(res.payload.message) )
+            .then((res)=>res.type===SIGNUP_SUCCESS && res.payload.message==="Account created successfully." ? alert(res.payload.message) & navigate("/auth/confirmemail") : alert(res.payload.message) )
         }
     }
     return (
