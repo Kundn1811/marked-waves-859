@@ -1,0 +1,85 @@
+.time-section{
+   
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.total-time{
+    border: 1px solid gray;
+   border-radius: 10px;
+   margin-bottom: 1rem;
+}
+.time-task{
+    border: 1px solid gray;
+    height: 25vh;
+    border-radius: 10px;
+}
+.total-time-top{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.timeBar{
+    text-align: center;
+}
+.timeBar p{
+    font-size: 0.8rem;
+    color: gray;
+}
+.timebar-pointer{
+    width: 90%;
+    margin: auto;
+    height: 1.2rem;
+    background-color: rgb(153, 152, 162);
+}
+.time-stamp{
+   
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.time-stamp p{
+   color: black;
+}
+.point-stamp{
+    border: 1px solid rgb(69, 69, 69);
+    height: 0.6rem;
+    width: 10%;
+    margin-top: -5px;
+    background-color: white;
+}
+.time-task>div{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(102, 102, 102);
+   
+}
+.timenav{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.timenav-btn{
+    display: flex;
+    gap: 10px;
+}
+.timenav-btn>div{
+ display: flex;  
+ align-items: center;
+ border-left: 1px solid gray ;
+ color: rgb(140, 138, 138);
+}
+.playbtn{
+    font-size: 2.2rem;
+    color: rgba(11, 172, 11, 0.93);
+    margin: 2px;
+}
+.stopbtn{
+    font-size: 2.2rem;
+    color: gray;
+    margin: 2px;
+}
