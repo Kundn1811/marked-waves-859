@@ -10,8 +10,7 @@ const user = Router();
 user.post("/signup",async(req,res)=>{
     const {email,name,password} = req.body;
     const user = await UserModel.findOne({email})
-    // res.send(user? user : "nouser")
-
+    
     if(user) return res.send({message : "Account with this Email id already exists."})
     if(!email) return res.send({message : "please enter EmailId."})
     if(!email.includes("@gmail.com")) return res.send({message:"Please enter correct emailId."})
@@ -24,7 +23,7 @@ user.post("/signup",async(req,res)=>{
         user.save();
         jwt.sign({email,userId:user._id}, process.env.secretKey, function(err, token) {
             if(err) return res.send({message : "wrong password."})
-            return res.send({message:"Account created successfully.",token:token})
+            return res.send({message:"Account created successfully.",token:token,userId:user._id,email})
         });
        
     });
@@ -38,9 +37,9 @@ user.post("/signin",async(req,res)=>{
     bcrypt.compare(password,user.password, function(err, result) {
         if(!result) return res.send({message:"Wrong credential"})
         if(result){
-            jwt.sign({email,userId:user._id}, process.env.secretKey, function(err, token) {
+            jwt.sign({email,userId:user._id}, process.env.secretKey,{expiresIn:"1d"}, function(err, token) {
                 if(err) return res.send({message : "wrong password."})
-                return res.send({message : "Signed in Successfully.",token:token})
+                return res.send({message : "Signed in Successfully.",token:token,userId:user._id,email})
             });
         }
     });

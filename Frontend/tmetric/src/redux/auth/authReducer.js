@@ -29,7 +29,9 @@ export const authReducer = (state = initState,{type,payload}) => {
             }
         }
         case SIGNUP_SUCCESS : {
-        saveData("tmetricUse",payload)
+
+            saveData("tmetricUser",payload)
+            saveData("isAuth",true)
             return {
                ...state,
                isLoading:false,
@@ -51,6 +53,7 @@ export const authReducer = (state = initState,{type,payload}) => {
         }
         case SIGNIN_SUCCESS : {
             saveData("tmetricUser",payload)
+            saveData("isAuth",true)
             return {
                ...state,
                isLoading:false,

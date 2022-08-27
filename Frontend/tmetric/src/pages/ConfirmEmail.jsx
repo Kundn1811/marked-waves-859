@@ -60,10 +60,10 @@ const ConfirmEmail = () => {
                               
                             >
                                 <Text className={styles.text}>We sent an email to 
-                                    <span fontWeight="600"> {`${email}`}</span>. 
+                                    <span style={{fontWeight:"600",color:"black"}}> {`${email}`}</span>. 
                                      Check your inbox to activate your account. 
                                 </Text>
-                                <Text className={styles.text} >Tips : Check your spam folder incase the email was incorrectly identified.</Text>
+                                <Text className={styles.text} >Tips : Check your spam folder in case the email was incorrectly identified.</Text>
 
                                 <Stack spacing={10}>
                 <Input
