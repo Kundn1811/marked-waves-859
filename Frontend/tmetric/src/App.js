@@ -1,7 +1,13 @@
-import "./App.css";
+
+import React from 'react'
+import './App.css'
+import Navbar from './components/Navbar'
+import Allroutes from './routes/Allroutes';
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Allroutes from "./routes/Allroutes";
+import Dashboard from './pages/Dashboard';
+
+
+
 
 function App() {
   return (
@@ -9,6 +15,7 @@ function App() {
       <Navbar />
       <Allroutes />
       <Footer />
+      <Dashboard/>
     </div>
   );
 }

@@ -1,8 +1,9 @@
 const express = require('express')
+const authentication = require('../Middleware/authentication')
 const ProjectModel = require('../Modals/project.model')
 const projectController = express.Router()
 // --------------------------------------------------------------------------------------------------->
-projectController.get("/", async (rrq, res)=>{
+projectController.get("/", authentication, async (rrq, res)=>{
     const {userId} = req.body
     const projects = await ProjectModel.find({userId})
     if(projects){
@@ -16,7 +17,7 @@ projectController.get("/", async (rrq, res)=>{
     }
 })
 // --------------------------------------------------------------------------------------------------->
-projectController.post("/create", async(req, res)=>{
+projectController.post("/create", authentication, async(req, res)=>{
     const new_project = await new ProjectModel({
         ...req.body,
     })
@@ -25,12 +26,12 @@ projectController.post("/create", async(req, res)=>{
             res.send("Some error occured", err)
         }
         else{
-            res.send("Success")
+            res.send({message:"Success"})
         }
     })
 })
 // --------------------------------------------------------------------------------------------------->
-projectController.delete("/:projectId/delete", async (req, res)=>{
+projectController.delete("/:projectId/delete", authentication, async (req, res)=>{
     const {projectId} = req.params
     const {userId} = req.body
     const project = await ProjectModel.findOne({_id:projectId})
@@ -42,11 +43,11 @@ projectController.delete("/:projectId/delete", async (req, res)=>{
         })
     }
     else{
-        res.send("You are not authorized")
+        res.send({message:"You are not authorized"})
     }
 })
 // --------------------------------------------------------------------------------------------------->
-projectController.patch("/:projectId/patch", async (req, res)=>{
+projectController.patch("/:projectId/patch", authentication, async (req, res)=>{
     const {projectId} = req.params
     const {userId} = req.body
     const details = await ProjectModel.findOne({_id:projectId})

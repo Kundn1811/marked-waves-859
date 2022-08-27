@@ -32,7 +32,7 @@ const CreateProject = () => {
   return (
     <div className={styles.main_container_form}>
       <div className={styles.form_top_div}>
-        <FiArrowLeft onClick={() => navigate("/project")} fontSize={"30px"} />
+        <FiArrowLeft onClick={() => navigate("/dashboard")} fontSize={"30px"} />
 
         <h1>New Project</h1>
       </div>
