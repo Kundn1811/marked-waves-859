@@ -361,10 +361,10 @@ const Navbar = () => {
             <NavLink to="/pricing">Pricing</NavLink>
           </li>
           <li>
-            <a href="/support">Support</a>
+            <NavLink to="/support">Support</NavLink>
           </li>
           <li>
-            <a href="/blog">Blog</a>
+            <NavLink to="/blog">Blog</NavLink>
           </li>
         </ul>
         <div className="authBtn">
