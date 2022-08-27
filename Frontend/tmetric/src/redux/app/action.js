@@ -10,10 +10,14 @@ import {
     TASK_UPDATE_FAILURE,
      TASK_DELETE_REQUEST,
      TASK_DELETE_SUCCESS,
-     TASK_DELETE_FAILURE
+     TASK_DELETE_FAILURE,
+     GET_TASKS_REQUEST,
+     GET_TASKS_SUCCESS,
+     GET_TASKS_FAILURE
 } from "./actionType"
 import axios from 'axios'
 import { loadData } from "../../utils/localstorage"
+
 
 
 export const workspaceCreateRequest = () => {
@@ -30,6 +34,24 @@ export const workspaceCreateSuccess = (payload) => {
 export const workspaceCreateFailure = (err) => {
     return {
         type : WORKSPACE_CREATE_FAILURE,
+        err
+    }
+}
+
+export const getTasksRequest = () => {
+    return {
+        type : GET_TASKS_REQUEST
+    }
+}
+export const getTasksSuccess = (payload) => {
+    return {
+        type : GET_TASKS_SUCCESS,
+        payload
+    }
+}
+export const getTasksFailure = (err) => {
+    return {
+        type : GET_TASKS_FAILURE,
         err
     }
 }
@@ -87,6 +109,10 @@ export const taskDeleteFailure = (err) => {
     }
 }
 
+
+// ====================Workspace========================
+
+
 export const createWorkSpace = (payload) => (dispatch) => {
     dispatch(workspaceCreateRequest())
     return axios.post("http://localhost:8080/workspace/create",payload,{
@@ -96,6 +122,20 @@ export const createWorkSpace = (payload) => (dispatch) => {
     })
     .then((res)=>dispatch(workspaceCreateSuccess(res.data)))
     .catch((err)=>dispatch(workspaceCreateFailure(err)))
+}
+
+
+//=================================TASKS=================================
+
+export const getTasks = (payload) => (dispatch) => {
+    dispatch(getTasksRequest())
+    return axios.post("http://localhost:8080/tasks",payload,{
+        headers : {
+            "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
+        }
+    })
+    .then((res)=>dispatch(getTasksSuccess(res.data)))
+    .catch((err)=>dispatch(getTasksFailure(err)))
 }
 
 export const createTask = (payload) => (dispatch) => {

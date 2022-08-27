@@ -4,11 +4,18 @@ import {Select,Input,InputGroup,InputLeftElement, border} from "@chakra-ui/react
 import {SearchIcon} from "@chakra-ui/icons"
 import NoResult from "./NoResult"
 import NewTaskLayout from './NewTaskLayout'
+import {useDispatch,useSelector} from "react-redux"
+import { createTask, getTasks } from '../../redux/app/action'
+import { GET_TASKS_SUCCESS, TASK_CREATE_SUCCESS } from '../../redux/app/actionType'
 
 
 const TaskContHead = () => {
     const [show,setShow] = React.useState(false);
     const [assignee,setAssignee] = React.useState("Select Assignee")
+    const [creater,SetCreater] = React.useState("")
+    const [taskName,setTaskName] = React.useState("")
+    const [project,setProject] = React.useState("")
+    const [tasks,setTasks] = React.useState([])
     const members = [
         "Rohit",
         "Aaro",
@@ -26,8 +33,40 @@ const TaskContHead = () => {
     const creator = ["a","b","c"]
     const sources = ["a","b","c"]
     const status = ["Open","Completed"]
-    const tasks = []
+ 
     const handleShow = () => setShow(true)
+
+
+    const dispatch = useDispatch()
+    const userId = ""
+    React.useEffect(()=>{
+        dispatch(getTasks(userId))
+        .then((res)=>{
+            if(res.type==GET_TASKS_SUCCESS) {
+                console.log(tasks)
+                setTasks(res.data)
+            }
+        })
+    },[assignee,creater,taskName,project])
+    
+
+    const PostNewTask = ()=>{
+        dispatch(createTask({assignee:"",creater:"",taskName:"",project:""}))
+        .then((res)=> console.log(res.data))
+        .catch((err) =>console.log(err))
+    }
+
+    const updateTask = () => {
+        dispatch(update({
+            taskName,
+            creater,assignee,project
+        }))
+    }
+    const deleteParticularTask = () => {
+        dispatch(deleteTask({taskId}))
+    }
+
+
   return (
     <div className={styles.TaskHeadContWrapper}>
          <div className={styles.HeadSection} >
@@ -154,14 +193,15 @@ const TaskContHead = () => {
         </duv>
 
     {/*==========================New Task button Section============================== */}
+
         <div style={{display:"flex", border: "solid #a1a7b2 1px", height:"100%" ,flexDirection:"column"}}>
             <div style={{display:"flex",justifyContent:"space-between", margin:"5px 1px",   border: "solid #a1a7b2 1px" }}>
             <div className={styles.NewtaskDivWrapper}>
                 <div style={{display:"flex",gap:"20px"}}>
                     <div 
                         className={styles.NewTaskButton}
-                        onClick={()=>tasks.push({})
-                        }>+ New task</div>
+                        onClick={PostNewTask}
+                        >+ New task</div>
                 </div>
                 <div className={styles.SortDIv}>
                     <Select>

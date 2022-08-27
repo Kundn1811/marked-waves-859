@@ -84,7 +84,7 @@ const ConfirmEmail = () => {
         </Flex>
     </div>
     <div className={styles.RightImageDiv}>
-        <Image width="100%" src='https://id.tmetric.com/images/side_image_register.svg' />
+        <Image width="100%" src='https://id.tmetric.com/images/side_image_confirm_email.svg' />
     </div>
     </div>
        </div>
