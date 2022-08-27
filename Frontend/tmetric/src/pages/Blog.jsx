@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./Blog.module.css";
+import style from "../Styles/Blog.module.css";
 import BlogCard from "./BlogCard";
-import Data from "../Data.json";
+import Data from "../data/Data.json";
 const Blog = () => {
   return (
     <>
