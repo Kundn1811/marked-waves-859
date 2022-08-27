@@ -6,8 +6,9 @@ const taskSchema = new mongoose.Schema({
     projectName: {type:String, required : true},
     creater : "String",
     dueDate : String,
-    workSpace:String,
+    workSpaceId:String,
     userId:String,
+    projectId:String,
     taskStatus:{type:String,default:"open"}
 })
 
