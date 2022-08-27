@@ -46,7 +46,7 @@ import { WORKSPACE_CREATE_SUCCESS } from '../redux/app/actionType';
         else if(!teamSize) sizeRef.current.focus()
         else{
             dispatch( createWorkSpace({companyName,teamSize}))
-            .then((res)=>res.type===WORKSPACE_CREATE_SUCCESS && res.payload.message==="Workspace created successfully Successfully." ? alert(res.payload.message) & navigate("/integratettworkspace") : alert(res.payload.message) )
+            .then((res)=>res.type===WORKSPACE_CREATE_SUCCESS && res.payload.message==="Workspace created successfully Successfully." ? alert(res.payload.message) & navigate("/auth/integratettworkspace") : alert(res.payload.message) )
         }
     }
     return (

@@ -20,7 +20,11 @@ user.post("/signup",async(req,res)=>{
             password:hash
         })
         user.save();
-        return res.send({message:"Account created successfully."})
+        jwt.sign({email,userId:user._id}, process.env.secretKey, function(err, token) {
+            if(err) return res.send({message : "wrong password."})
+            return res.send({message:"Account created successfully.",token:token})
+        });
+       
     });
 })
 

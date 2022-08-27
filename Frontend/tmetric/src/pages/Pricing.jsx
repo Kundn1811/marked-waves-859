@@ -350,7 +350,7 @@ const Pricing = () => {
               1
             </Button>
             <Text>
-              <Link to="/login" style={{ color: "#3070f0" }}>
+              <Link href="/signin" style={{ color: "#3070f0" }}>
                 Log in
               </Link>
               <span> </span>

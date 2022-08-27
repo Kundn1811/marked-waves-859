@@ -40,7 +40,7 @@ import {
     
   const handleNavigate = () =>{
      setTimeout(()=>{
-        navigate("/setupalmostcomp")
+        navigate("/auth/setupalmostcomp")
      },10000)
   }
     return (
