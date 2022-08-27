@@ -151,7 +151,7 @@ export const createTask = (payload) => (dispatch) => {
 
 export const updateTask = (payload) => (dispatch) => {
     dispatch(taskUpdateRequest())
-    return axios.patch("http://localhost:8080/task/create",payload,{
+    return axios.patch("http://localhost:8080/task/update",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
@@ -162,7 +162,7 @@ export const updateTask = (payload) => (dispatch) => {
 
 export const deleteTask = (payload) => (dispatch) => {
     dispatch(taskDeleteRequest())
-    return axios.patch("http://localhost:8080/task/create",payload,{
+    return axios.patch("http://localhost:8080/task/delete",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }

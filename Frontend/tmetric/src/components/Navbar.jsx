@@ -1,11 +1,31 @@
 import React from "react";
 import { Button, Heading } from "@chakra-ui/react";
 import "../Styles/navbar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { BiChevronDown } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
+import { loadData, saveData } from "../utils/localstorage";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+    const email = loadData('tmetricUser')?.email
+    const [a,setA] = React.useState("")
+    const [data,setData] = React.useState(
+        email ? email : "Sign in"
+    )
+    const navigate = useNavigate()
+
+    const handleLogin = () =>{
+        if(email) {
+            saveData('tmetricUser',"")
+            setData("Sign In")
+            navigate("/")
+        }
+        else navigate("/auth/signin")
+    }
+    React.useEffect(()=>{
+        setA("")
+    },[data])
   return (
     <nav>
       <div className="wrapper">
@@ -376,7 +396,11 @@ const Navbar = () => {
             href={"#"}
             _hover=""
           >
-            <NavLink to="/auth/signin">Log In</NavLink>
+            <div 
+            onClick={handleLogin}>
+                {data}
+                
+            </div>
           </Button>
           <Button
             display={{ base: "none", md: "inline-flex" }}
