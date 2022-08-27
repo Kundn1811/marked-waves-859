@@ -1,9 +1,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styles from '../Styles/sidebar.module.css'
-// import TodoSideBar from "../components/TodoSideBar";
 import { BiTask } from "react-icons/bi";
 import Ts from "../components/Ts";
+import { Link } from "react-router-dom";
 
 function SideBar({showAdd}) {
     const sidebarRef = useRef(null);
@@ -107,7 +107,7 @@ function SideBar({showAdd}) {
                     : "https://tmetric.com/media/qojb5snq/icon-timer-gray.svg"
                 }
               />
-              <span>Time</span>
+              <Link to='/app/timemanage'><span>Time</span></Link>            
             </div>
             <div
               className={task ? styles.selecteddiv : styles.normaldiv}

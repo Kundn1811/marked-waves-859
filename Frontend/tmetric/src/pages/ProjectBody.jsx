@@ -58,7 +58,7 @@ function ProjectBody() {
               <div>
                 <button
                     onClick={() => {
-                        navigate("/newdashboard");
+                        navigate("/app/newproject");
                     }}
                     >
                     + New Project
@@ -104,7 +104,7 @@ function ProjectBody() {
             </div>
             <div></div>
           </div>
-          {newArray?.map((el, index) => (
+          {/* {newArray?.map((el, index) => (
             <Project
               key={index}
               {...el}
@@ -112,7 +112,7 @@ function ProjectBody() {
               setOptions={setOptions}
               index={index}
             />
-          ))}
+          ))} */}
 
 
 
