@@ -12,9 +12,13 @@ import {
   import {CheckIcon,CloseIcon,EditIcon} from "@chakra-ui/icons"
   import styles from "../../Styles/NewtaskLaout.module.css"
 import { CustomControlableInput } from './CustomControllableInput'
-const NewTaskLayout = ({tasks}) => {
+const NewTaskLayout = ({tasks,assignee}) => {
+
     const [start,setStart] = React.useState(false);
     const [completed,setCompleted] = React.useState(false)
+
+
+    
   return (
     <div className={styles.NewTaskCompWrapper}>
 {/* ====================Left wing=================== */}
@@ -22,7 +26,7 @@ const NewTaskLayout = ({tasks}) => {
             <List spacing={3}>
             Projects
            
-               {tasks?.map((elem)=>{
+               {tasks?.map((elem)=>
                  <ListItem px={5} bg="#dddd" borderRadius={5} margin={2}>
                               <Flex>
                               <ListIcon as={CheckIcon} marginTop={2} color='green.500' />
@@ -32,7 +36,7 @@ const NewTaskLayout = ({tasks}) => {
                               </Editable>
                           </Flex>
                     </ListItem>
-               })}
+               )}
             </List>
         </div>
 
@@ -77,7 +81,7 @@ const NewTaskLayout = ({tasks}) => {
 
 
             <div className={styles.taskNameInput}>
-                <Editable width={"100%"} defaultValue='Write a Task name' px={2}>
+                <Editable width={"100%"} defaultValue={assignee} px={2}>
                 <EditablePreview width={"100%"} />
                 <EditableInput />
                 </Editable>

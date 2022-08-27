@@ -10,6 +10,7 @@ import { GET_TASKS_SUCCESS, TASK_CREATE_SUCCESS } from '../../redux/app/actionTy
 
 
 const TaskContHead = () => {
+    const [assign,setAssign] = React.useState("")
     const [show,setShow] = React.useState(false);
     const [assignee,setAssignee] = React.useState("Select Assignee")
     const [creater,SetCreater] = React.useState("")
@@ -17,15 +18,8 @@ const TaskContHead = () => {
     const [project,setProject] = React.useState("")
     const [tasks,setTasks] = React.useState([])
 
-
     const handleShow = () => setShow(true)
 
-
-    const members = [
-        "Rohit",
-        "Aaro",
-        'Satyendra'
-    ];
     const projects = [
         "a",
         "v",
@@ -35,8 +29,7 @@ const TaskContHead = () => {
         "a","b","c"    ]
     const tags = ["No work","Design","Development","Impletation","testing"]
     // const status = ["No tag","No work","Design","Development","Impletation","testing"]
-    const creator = ["a","b","c"]
-    const sources = ["a","b","c"]
+
     const status = ["Open","Completed"]
  
     
@@ -45,18 +38,14 @@ const TaskContHead = () => {
     const dispatch = useDispatch()
     React.useEffect(()=>{
         dispatch(getTasks({}))
-        .then((res)=>{
-            if(res.type==GET_TASKS_SUCCESS) {
-                console.log(tasks)
-                setTasks(res.data)
-            }
-        })
+        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTasks(res.payload.tasks) : console.log("no tasks"))
     },[assignee,creater,taskName,project])
+    console.log(tasks)
     
 
     const PostNewTask = ()=>{
         dispatch(createTask({assignee:"",creater:"",taskName:"",project:""}))
-        .then((res)=> console.log(res.data))
+        .then((res)=> console.log(res))
         .catch((err) =>console.log(err))
     }
 
@@ -112,15 +101,15 @@ const TaskContHead = () => {
                      </div>
                      <div style={{color:"#777e85"}}>Members</div>
                     {
-                        members?.map((elem,index)=>(
+                        tasks?.map((elem,index)=>(
                             <div onClick={()=>{
-                                    setAssignee(elem)
+                                    setAssignee(elem.assignee)
                                     setShow(false)
                                 }} 
-                                className={styles.optionStyling} key={index} value={elem.name}>
+                                className={styles.optionStyling} key={index} value={elem.assignee}>
                                 <div className={styles.OptionFlex}>
                                     <div><i className="fa-solid fa-user-tie"></i></div>
-                                    <div>{elem}</div>
+                                    <div>{elem.assignee}</div>
                                 </div> 
                             </div>
                         ))
@@ -133,7 +122,7 @@ const TaskContHead = () => {
    {/*==========================Filter Section============================== */}
 
 
-        <duv className={styles.FilterWrapper}>
+        <div className={styles.FilterWrapper}>
         <div className={styles.filterButton}>
             <Select >
                 <option value='Project : All'>
@@ -177,7 +166,7 @@ const TaskContHead = () => {
                 <option value='Any'>
                     Creator : Any</option>
                 <option value='me'>Me</option>
-                {members?.map((elem)=>(
+                {tasks.assignee?.map((elem)=>(
                     <option value={elem}>{elem}</option>
                 ))}
             </Select>
@@ -194,7 +183,7 @@ const TaskContHead = () => {
             <div className={styles.filterButton}>
               <button style={{marginTop:"2px",border:"solid #a1a7b2 1px",padding:"5px",borderRadius:"5px"}}>Clear Filters</button>
             </div>
-        </duv>
+        </div>
 
     {/*==========================New Task button Section============================== */}
 
@@ -230,7 +219,7 @@ const TaskContHead = () => {
             </div>
             </div>
             {
-                !tasks.length ? <NoResult /> : <NewTaskLayout tasks={tasks} />
+                !tasks.length ? <NoResult /> : <NewTaskLayout tasks={tasks} assignee={assignee} />
             }
         </div>
 
