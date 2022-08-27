@@ -5,7 +5,9 @@ const user = require("./Controlers/user.controller");
 const cors = require("cors");
 const projectController = require("./Controlers/project.controller");
 const workspace = require("./Controlers/workSpace.controller");
+const task = require("./Controlers/taskController");
 const authentication = require("./Middleware/authentication");
+
 
 
 
@@ -18,6 +20,7 @@ app.use(express.json())
 app.use("/auth",user)
 app.use("/project", projectController)
 app.use("/workspace",workspace)
+app.use("/task",task)
 
 
 

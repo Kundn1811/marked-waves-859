@@ -40,7 +40,7 @@ const TaskContHead = () => {
     const dispatch = useDispatch()
     const userId = ""
     React.useEffect(()=>{
-        dispatch(getTasks(userId))
+        dispatch(getTasks({}))
         .then((res)=>{
             if(res.type==GET_TASKS_SUCCESS) {
                 console.log(tasks)
@@ -56,15 +56,15 @@ const TaskContHead = () => {
         .catch((err) =>console.log(err))
     }
 
-    const updateTask = () => {
-        dispatch(update({
-            taskName,
-            creater,assignee,project
-        }))
-    }
-    const deleteParticularTask = () => {
-        dispatch(deleteTask({taskId}))
-    }
+    // const updateTask = () => {
+    //     dispatch(update({
+    //         taskName,
+    //         creater,assignee,project
+    //     }))
+    // }
+    // const deleteParticularTask = () => {
+    //     dispatch(deleteTask())
+    // }
 
 
   return (
