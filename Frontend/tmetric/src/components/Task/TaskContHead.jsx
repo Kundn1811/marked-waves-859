@@ -20,17 +20,16 @@ const TaskContHead = () => {
 
     const handleShow = () => setShow(true)
 
-    const projects = [
-        "a",
-        "v",
-        "c"
-    ]
+
     const clients = [
-        "a","b","c"    ]
+        "Arya","Bruce","Hector"    ]
     const tags = ["No work","Design","Development","Impletation","testing"]
     // const status = ["No tag","No work","Design","Development","Impletation","testing"]
 
-    const status = ["Open","Completed"]
+    const status = ["Open","Completed"];
+    const projects = ["Advance js","React js", "MOngoDb"]
+    const createrr = ["Aman","Arya","Anand"]
+   
  
     
 
@@ -112,7 +111,7 @@ const TaskContHead = () => {
 
 
         <div className={styles.FilterWrapper}>
-        {/* <div className={styles.filterButton}>
+        <div className={styles.filterButton}>
             <Select >
                 <option value='Project : All'>
                     Client : All</option>
@@ -155,7 +154,7 @@ const TaskContHead = () => {
                 <option value='Any'>
                     Creator : Any</option>
                 <option value='me'>Me</option>
-                {taskList?.map((elem)=>(
+                {createrr?.map((elem)=>(
                     <option value={elem}>{elem}</option>
                 ))}
             </Select>
@@ -171,7 +170,7 @@ const TaskContHead = () => {
             </div>
             <div className={styles.filterButton}>
               <button style={{marginTop:"2px",border:"solid #a1a7b2 1px",padding:"5px",borderRadius:"5px"}}>Clear Filters</button>
-            </div> */}
+            </div> 
         </div>
 
     {/*==========================New Task button Section============================== */}
