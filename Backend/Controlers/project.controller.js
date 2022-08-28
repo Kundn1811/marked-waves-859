@@ -32,6 +32,7 @@ projectController.post("/create", authentication, async(req, res)=>{
     new_project.save()
     res.send({message:"Created successfully",new_project})
 })
+
 // --------------------------------------------------------------------------------------------------->
 projectController.delete("/:projectId/delete", authentication, async (req, res)=>{
     const {projectId} = req.params

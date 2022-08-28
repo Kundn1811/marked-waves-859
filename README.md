@@ -15,13 +15,14 @@ TMetric is time tracking software operated by TMetric team, headquartered in Pra
      <li>Open our code in VS code</li>
      <li>On your terminal just write the command npm install</li>
      <li>Initialize the server by writing 'npm run server' on Terminal</li>
-     <li>Than you can navigate to our website.</li>
+     <li>Now you can navigate to our website.</li>
    </ul>
 
     
  <h1>Features</h1>
 <ul>
  <li>Home Page </li>
+ <li>Authentication</li>
  <li>Project Managment</li>
  <li>Task Mangement</li>
  <li>Pricing</li>
