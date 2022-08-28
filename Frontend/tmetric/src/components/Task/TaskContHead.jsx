@@ -5,7 +5,7 @@ import {SearchIcon} from "@chakra-ui/icons"
 import NoResult from "./NoResult"
 import NewTaskLayout from './NewTaskLayout'
 import {useDispatch,useSelector} from "react-redux"
-import { createTask, getTasks } from '../../redux/app/action'
+import { createTask, getTasks ,updateTask,deleteTask} from '../../redux/app/action'
 import { GET_TASKS_SUCCESS, TASK_CREATE_SUCCESS } from '../../redux/app/actionType'
 
 
@@ -48,6 +48,9 @@ const TaskContHead = () => {
         .then((res)=> res.type === 'TASK_CREATE_SUCCESS'  && res.payload.message == "task created successfully." ? dispatch(getTasks()).then((res)=>setTaskList(res.payload.tasks)).catch((err)=>console.log(err)) : console.log("err"))
         .catch((err) =>console.log(err))
     }
+
+
+
 
   return (
     <div className={styles.TaskHeadContWrapper}>

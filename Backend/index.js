@@ -24,6 +24,7 @@ app.use("/task",task)
 
 app.get("/",(req,res)=>{
     res.send("heroku")
+
 })
 
 
@@ -31,7 +32,7 @@ app.get("/",(req,res)=>{
 app.listen(process.env.PORT,async()=>{
     try {
         await connection;
-        console.log("Database connected successfully")
+        console.log("Database connected successfully", process.env.port)
     } catch (error) {
         console.log("unable to make connection with Database")
     }

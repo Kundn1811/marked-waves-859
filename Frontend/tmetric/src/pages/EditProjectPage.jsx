@@ -99,7 +99,7 @@ const EditProjectPage = () => {
                     className={styles.projectnameInput}
                     type="text"
                     placeholder="Enter project name"
-                    required
+                  
                     name={"name"}
                     onChange={(e) => {
                       setFormData({
@@ -124,7 +124,7 @@ const EditProjectPage = () => {
                       });
                     }}
                     onKeyUp={checkShowSave}
-                    required
+                   
                   />
                 </div>
               </div>

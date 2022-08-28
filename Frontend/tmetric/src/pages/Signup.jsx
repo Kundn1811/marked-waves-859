@@ -160,7 +160,7 @@ import { SIGNUP_SUCCESS } from '../redux/auth/actionType';
                    <Stack pt={6}>
                      <Text align={'center'} color="black">
                      Already have an account? <Link color={'blue.400'}>
-                        <NavLink to="/signin" >Login</NavLink>
+                        <NavLink to="/auth/signin" >Login</NavLink>
                      </Link>
                      </Text>
                    </Stack>

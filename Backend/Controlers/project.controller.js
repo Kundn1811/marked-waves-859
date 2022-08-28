@@ -4,6 +4,7 @@ const ProjectModel = require('../Modals/project.model')
 const projectController = express.Router()
 // --------------------------------------------------------------------------------------------------->
 projectController.get("/", authentication, async (req, res)=>{
+
     const {status} = req.query
     const {userId} = req.body
     if(status){
@@ -22,19 +23,23 @@ projectController.get("/", authentication, async (req, res)=>{
     }
     else{
         res.send({message:"You are not Authorized"})
+
     }
+
 })
 // --------------------------------------------------------------------------------------------------->
 projectController.post("/create", authentication, async(req, res)=>{
+
     const new_project = await new ProjectModel({
         ...req.body,
     })
     new_project.save()
     res.send({message:"Created successfully",new_project})
+
 })
 
 // --------------------------------------------------------------------------------------------------->
-projectController.delete("/:projectId/delete", authentication, async (req, res)=>{
+projectController.delete("/delete/:projectId", authentication, async (req, res)=>{
     const {projectId} = req.params
     const {userId} = req.body
     const project = await ProjectModel.findOne({_id:projectId})
@@ -50,7 +55,7 @@ projectController.delete("/:projectId/delete", authentication, async (req, res)=
     }
 })
 // --------------------------------------------------------------------------------------------------->
-projectController.patch("/:projectId/patch", authentication, async (req, res)=>{
+projectController.patch("/patch/:projectId", authentication, async (req, res)=>{
     const {projectId} = req.params
     const {userId} = req.body
     const details = await ProjectModel.findOne({_id:projectId})
