@@ -3,35 +3,26 @@ const authentication = require('../Middleware/authentication')
 const ProjectModel = require('../Modals/project.model')
 const projectController = express.Router()
 // --------------------------------------------------------------------------------------------------->
-projectController.get("/", authentication, async (rrq, res)=>{
-    const {userId} = req.body
-    const projects = await ProjectModel.find({userId})
-    if(projects){
-        return res.send({
-            message:"GET REQUEST SUCCESSFUL",
-            projects
-        })
+projectController.get("/", authentication, async (req, res)=>{
+   
+    try{
+        const project = await ProjectModel.find({userId:req.body.userId});
+        return res.send(project)
+    }catch(err){
+        res.send(err)
     }
-    else{
-        res.send("Please create some projects")
-    }
+
 })
 // --------------------------------------------------------------------------------------------------->
 projectController.post("/create", authentication, async(req, res)=>{
-    const new_project = await new ProjectModel({
-        ...req.body,
-    })
-    new_project.save((err, success)=>{
-        if(err){
-            res.send("Some error occured", err)
-        }
-        else{
-            res.send({message:"Success"})
-        }
-    })
+    const {userId,} = req.body;
+    const project = new ProjectModel({...req.body })
+    await project.save();
+    if(project) return res.send({message : "project created successfully.",projectId:project._id}) 
+    else return res.send({message : "Please fill all field."}) 
 })
 // --------------------------------------------------------------------------------------------------->
-projectController.delete("/:projectId/delete", authentication, async (req, res)=>{
+projectController.delete("/delete/:projectId", authentication, async (req, res)=>{
     const {projectId} = req.params
     const {userId} = req.body
     const project = await ProjectModel.findOne({_id:projectId})
@@ -47,7 +38,7 @@ projectController.delete("/:projectId/delete", authentication, async (req, res)=
     }
 })
 // --------------------------------------------------------------------------------------------------->
-projectController.patch("/:projectId/patch", authentication, async (req, res)=>{
+projectController.patch("/patch/:projectId", authentication, async (req, res)=>{
     const {projectId} = req.params
     const {userId} = req.body
     const details = await ProjectModel.findOne({_id:projectId})

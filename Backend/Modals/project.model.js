@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
-const schema = mongoose.Schema({
-    userId:{ type: Boolean, default: false },
+const schema = new mongoose.Schema({
+    userId:String,
+    workSpaceId:String,
     status: { type: Boolean, default: false },
     name: { type: String, required: true },
     code: { type: String, required: true },

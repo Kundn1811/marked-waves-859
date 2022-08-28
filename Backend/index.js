@@ -22,14 +22,16 @@ app.use("/project", projectController)
 app.use("/workspace",workspace)
 app.use("/task",task)
 
-
+app.get("/",(req,res)=>{
+    res.send("home page")
+})
 
 
 
 app.listen(process.env.port,async()=>{
     try {
         await connection;
-        console.log("Database connected successfully")
+        console.log("Database connected successfully", process.env.port)
     } catch (error) {
         console.log("unable to make connection with Database")
     }
