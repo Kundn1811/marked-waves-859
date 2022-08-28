@@ -6,7 +6,8 @@ const task = Router();
 
 task.get("/",authentication, async(req,res)=>{
     const {userId} = req.body
-    const user = await UserModel.find({userId})
+    const user = await UserModel.findOne({userId})
+    
     const tasks = await TaskModel.find({})
     return res.send({tasks,lead:user.name})
 })

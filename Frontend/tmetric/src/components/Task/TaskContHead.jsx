@@ -43,6 +43,7 @@ const TaskContHead = () => {
     
 
     const PostNewTask = ()=>{
+       
         dispatch(createTask({assignee:"",creater:"",taskName:"",projectName:""}))
         .then((res)=> res.type === 'TASK_CREATE_SUCCESS'  && res.payload.message == "task created successfully." ? dispatch(getTasks()).then((res)=>setTaskList(res.payload.tasks)).catch((err)=>console.log(err)) : console.log("err"))
         .catch((err) =>console.log(err))
@@ -92,15 +93,15 @@ const TaskContHead = () => {
                      </div>
                      <div style={{color:"#777e85"}}>Members</div>
                     {
-                        taskList?.map((elem,index)=>(
+                        createrr?.map((elem,index)=>(
                             <div onClick={()=>{
-                                    setAssignee(elem.assignee)
+                                    setAssignee(elem)
                                     setShow(false)
                                 }} 
                                 className={styles.optionStyling} key={index} value={elem.assignee}>
                                 <div className={styles.OptionFlex}>
                                     <div><i className="fa-solid fa-user-tie"></i></div>
-                                    <div>{elem.assignee}</div>
+                                    <div>{elem}</div>
                                 </div> 
                             </div>
                         ))
@@ -210,7 +211,7 @@ const TaskContHead = () => {
             </div>
             </div>
             {
-                !taskList.length ? <NoResult /> : <NewTaskLayout taskList={taskList} assignee={assignee} />
+                !taskList.length ? <NoResult /> : <NewTaskLayout  taskList={taskList} assignee={assignee} />
             }
         </div>
 

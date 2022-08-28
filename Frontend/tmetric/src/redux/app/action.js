@@ -150,6 +150,7 @@ export const createTask = (payload) => (dispatch) => {
 }
 
 export const updateTask = (payload) => (dispatch) => {
+    
     dispatch(taskUpdateRequest())
     return axios.patch("https://polar-woodland-63049.herokuapp.com/task/update",payload,{
         headers : {
@@ -161,7 +162,7 @@ export const updateTask = (payload) => (dispatch) => {
 }
 
 export const deleteTask = (payload) => (dispatch) => {
-    // console.log(payload)
+
     dispatch(taskDeleteRequest())
     return axios.delete("https://polar-woodland-63049.herokuapp.com/task/delete",payload,{
         headers : {

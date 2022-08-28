@@ -18,60 +18,68 @@ import {
   
 import { GET_TASKS_SUCCESS, TASK_DELETE_SUCCESS, TASK_UPDATE_SUCCESS } from '../../redux/app/actionType'
  
-
-const NewTaskLayout = ({taskList}) => {
+ const assignee = ["Araya","Aman","Hector","Luv"]
+const NewTaskLayout = ({taskList,addActivity}) => {
 
     const [taskName,setTaskName] = React.useState("")
     const [projectName,setProjectName] = React.useState("")
-    const [id,setId] = React.useState({})
+    const [id,setId] = React.useState()
     const [show,setShow] = React.useState(false)
     const [tasks,setTasks]=React.useState([])
     const  [lead,setLead] =React.useState("Un Assigned")
+    const [toRend,setTorend] = React.useState("")
     const dispatch = useDispatch()
+    const [activity,setActivity] = React.useState([])
 
     const [start,setStart] = React.useState(false);
     const [completed,setCompleted] = React.useState(false)
-    
-    console.log(lead)
 
+    
+console.log(activity)
     const update = (toUpdate) => {
+        let act = `${lead} updated taskName to ${taskName}`
+        activity.push(act)
         dispatch(updateTask(toUpdate))
-        .then((res)=>res.type==TASK_UPDATE_SUCCESS && res.payload.message=="task updated successfully."? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
+        .then((res)=>res.type==TASK_UPDATE_SUCCESS && res.payload.message=="task updated successfully."? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)& setTorend("a")& setLead(res.payload.lead) ).catch((err)=>console.log(err)) : "")
     }
-    const deleteT = () => {
-        console.log(id)
-        dispatch(deleteTask(id))
-        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=='task deleted successfully.' ? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)).catch((err)=>console.log(err)) : "")
+    const deleteT = (toDelete) => {
+        let act = `${lead} deleted a task`
+        activity.push(act)
+        dispatch(deleteTask(toDelete))
+        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=='task deleted successfully.' ? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)& setTorend("a") & setLead(res.payload.lead)).catch((err)=>console.log(err)) : "")
     }
 
     React.useEffect(()=>{
         dispatch(getTasks())
-        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTasks(res.payload.tasks) & setLead(res.payload.lead) : console.log("no tasks"))
-    },[taskList])
+        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTasks(res.payload.tasks) & setTorend("a") & setLead(res.payload.lead) : console.log("no tasks"))
+    },[taskList,toRend,activity])
 
 
 
-console.log(tasks)
+console.log(tasks,"projectName")
     
   return (
     <div className={styles.NewTaskCompWrapper}>
 {/* ====================Left wing=================== */}
-        <div className={styles.leftSideInputAndTask}>
+        <div className={styles.leftSideInputAndTask}  style={{overflow:"scroll"}}>
             <List spacing={3}>
             Projects
            
                {tasks?.map((elem)=>
-                 <ListItem px={5} bg="#dddd" borderRadius={5} margin={2} cursor="pointer" >
+                 <ListItem px={5} borderRadius={5} margin={2} className={styles.ManageLeftTaskBg} >
+
                               <Flex>
                               <ListIcon as={CheckIcon} marginTop={2} color='green.500' onClick={()=>{
-                                setId({_id:elem._id});
+                                setId(elem._id);
                                 setTaskName(elem.taskName)}
                               } />
                               <Editable width={"100%"} defaultValue={elem.taskName} px={2}>
                               <EditablePreview width={"100%"} />
                               <EditableInput 
                                     onChange={(e)=>setTaskName(e.target.value)}
-                                    onKeyDownCapture={(e)=>{ if(e.key=="Enter") update({taskName,_id:elem._id})}}
+                                    onKeyDownCapture={(e)=>{ if(e.key=="Enter") {
+                                        update({taskName,_id:elem._id})
+                                    }}}
                                 />
                               </Editable>
                           </Flex>
@@ -113,7 +121,7 @@ console.log(tasks)
                         <i style={{fontSize:"20px"}} className="fa-solid fa-share-nodes"></i>
                         {show ? <Button bg="red" color="white" onClick={()=>{
                             setShow(!show);
-                            deleteT(id)}
+                            deleteT({_id:id})}
                         }> Delete </Button> :  <i style={{fontSize:"20px"}} className="fa-solid fa-ellipsis" onClick={()=>setShow(!show)}></i>}
                         <i style={{fontSize:"20px"}} className="fa-solid fa-arrow-right-long" onClick={()=>setShow(!show)}></i>
                        
@@ -129,7 +137,7 @@ console.log(tasks)
                 <EditablePreview width={"100%"} />
                 <EditableInput 
                     onChange={(e)=>setTaskName(e.target.value)}
-                    onKeyDownCapture={(e)=>{if(e.key=="Enter") update({taskName})}}
+                    onKeyDownCapture={(e)=>{if(e.key=="Enter") update({taskName:taskName,_id:id})}}
                 />
                 </Editable>
             </div>
@@ -145,7 +153,7 @@ console.log(tasks)
                             <EditablePreview width={"100%"} />
                             <EditableInput 
                                onChange={(e)=>setProjectName(e.target.value)}
-                               onKeyDownCapture={(e)=>{ if(e.key=="Enter") update({projectName},id)}}
+                               onKeyDownCapture={(e)=>{ if(e.key=="Enter") update({projectName:projectName,_id:id})}}
                             />
                        </Editable>
                     </div>
@@ -159,12 +167,15 @@ console.log(tasks)
                         <Select placeholder='Unassigned'
 
                         onChange={(e)=>{
-                            update({assignee:e.target.value},id)
+                            update({assignee:e.target.value},{_id:id.userId})
                         }}
                         
                         >
-                            <option value={lead}>{lead}</option>
-                            {tasks?.map((elem,index)=><option key={index} value={elem.assignee}>{elem.assignee}</option>)}
+                        {assignee.map((elem)=>
+                            <option value={elem}>{elem}</option>
+                        )}
+                            {/* <option value={lead}>{lead}</option>
+                            {tasks?.map((elem,index)=><option key={index} value={elem.assignee}>{elem.assignee}</option>)} */}
                         </Select>
                     </div>
                     </div>
@@ -196,14 +207,26 @@ console.log(tasks)
                     <CustomControlableInput />
                 </div>
             </div>
-            <div className={styles.LowerActtagDiv} style={{borderBottom: "1px solid #a1a7b2"}}>
+            {/* <div className={styles.LowerActtagDiv} style={{borderBottom: "1px solid #a1a7b2"}}>
                <div><i className="fa-solid fa-tag"></i></div>
                <div>Add Tag</div>
+            </div> */}
+            <div>
+                   <div className={styles.LowerActtagDiv}>
+                      <div><i className="fa-solid fa-chart-column"></i></div>
+                     < div>Activity</div>
+                   </div>
+                   <ul style={{height:"10vh",overflow:"scroll"}}>
+                    {activity?.map((elem,index)=> 
+                        <Flex key={index}>
+                            <div><i style={{color:"green"}} className="fa-solid fa-user-tie"></i></div>
+                           <li style={{marginLeft:"10px"}} >{elem}</li>
+                        </Flex>
+                )}
+                   </ul>
             </div>
-            <div className={styles.LowerActtagDiv}>
-               <div><i className="fa-solid fa-chart-column"></i></div>
-               <div>Activity</div>
-            </div>
+            
+            
         </div>
        
        
