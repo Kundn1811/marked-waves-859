@@ -48,21 +48,9 @@ const TaskContHead = () => {
         .catch((err) =>console.log(err))
     }
 
-<<<<<<< HEAD
-    // const updateOne = () => {
-    //     dispatch(updateTask({
-
-    //         taskName,
-    //         creater,assignee,project
-    //     }))
-    // }
-    // const deleteParticularTask = () => {
-    //     dispatch(deleteTask({taskId}))
-    // }
 
 
-=======
->>>>>>> d7fcdd24edd5313305da909ff596c7f3fceecb04
+
   return (
     <div className={styles.TaskHeadContWrapper}>
          <div className={styles.HeadSection} >
