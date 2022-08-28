@@ -30,6 +30,7 @@ projectController.post("/create", authentication, async(req, res)=>{
         }
     })
 })
+
 // --------------------------------------------------------------------------------------------------->
 projectController.delete("/:projectId/delete", authentication, async (req, res)=>{
     const {projectId} = req.params
