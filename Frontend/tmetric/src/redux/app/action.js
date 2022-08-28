@@ -13,7 +13,10 @@ import {
      TASK_DELETE_FAILURE,
      GET_TASKS_REQUEST,
      GET_TASKS_SUCCESS,
-     GET_TASKS_FAILURE
+     GET_TASKS_FAILURE,
+     GET_PROJECT_FAILURE,
+     GET_PROJECT_SUCCESS,
+     GET_PROJECT_REQUEST
 } from "./actionType"
 import axios from 'axios'
 import { loadData } from "../../utils/localstorage"
@@ -170,4 +173,21 @@ export const deleteTask = (payload) => (dispatch) => {
     })
     .then((res)=>dispatch(taskDeleteSuccess(res.data)))
     .catch((err)=>dispatch(taskDeleteFailure(err)))
+}
+
+export const get_projects = ()=>dispatch=>{
+    return axios.get("https://still-beach-42324.herokuapp.com/project/",{
+        headers:{
+            'Authorization':`Bearer ${loadData("tmetricUser")?.token}`
+        }
+    })
+    .then((res)=>{
+        console.log(res.data)
+        dispatch({
+        type:GET_PROJECT_SUCCESS,
+        paylaod:res.data
+    })})
+    .catch((err)=>dispatch({
+        type:GET_PROJECT_FAILURE
+    }))
 }

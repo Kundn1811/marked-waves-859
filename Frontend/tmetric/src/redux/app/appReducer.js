@@ -10,14 +10,16 @@ import {
     TASK_UPDATE_FAILURE,
      TASK_DELETE_REQUEST,
      TASK_DELETE_SUCCESS,
-     TASK_DELETE_FAILURE
+     TASK_DELETE_FAILURE,
+     GET_PROJECT_SUCCESS
 } from "./actionType"
 
 const initState = {
     isLoading:false,
     isError:false,
     tasks:[],
-    workSpace:[]
+    workSpace:[],
+    projects:[]
 }
 
 
@@ -109,6 +111,13 @@ export const appReducer = (state={initState},{type,payload}) => {
                 ...state,
                 isLoading:false,
                 isError:true
+            }
+        }
+        case GET_PROJECT_SUCCESS:{
+            console.log(payload)
+            return {
+                ...state,
+                projects:payload
             }
         }
        default : {

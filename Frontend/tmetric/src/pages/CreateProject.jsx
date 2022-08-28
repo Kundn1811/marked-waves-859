@@ -241,7 +241,7 @@ const CreateProject = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        navigate("/project");
+                        navigate("/app/project");
                       }}
                     >
                       Cancel

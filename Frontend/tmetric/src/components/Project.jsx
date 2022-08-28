@@ -6,7 +6,8 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Project = (el) => {
-  const { index, options, setOptions, _id } = el;
+  const { index, options, setOptions,data } = el;
+    const {status,name,notes,code,_id} = data
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
@@ -16,12 +17,12 @@ const Project = (el) => {
         <div className={styles.folder_logo}>
           <RiFolderOpenFill />
         </div>
-        <p>{el.name}</p>
+        <p>{name}</p>
 
         {el.status && <span className={styles.project_div_status}>done</span>}
       </div>
       <div>
-        <p>{el.code}</p>
+        <p>{code}</p>
       </div>
       <div className={styles.project_div_noteam}>
         <p>No team</p>
@@ -78,10 +79,10 @@ const Project = (el) => {
             <hr />
             <div>
               <button
-                // onClick={() => {
+                onClick={() => {
                 //   dispatch(delete_project(_id));
-                //   setOptions(false);
-                // }}
+                  setOptions(false);
+                }}
               >
                 Delete
               </button>
