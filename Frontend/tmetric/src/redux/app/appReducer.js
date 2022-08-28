@@ -10,14 +10,19 @@ import {
     TASK_UPDATE_FAILURE,
      TASK_DELETE_REQUEST,
      TASK_DELETE_SUCCESS,
-     TASK_DELETE_FAILURE
+     TASK_DELETE_FAILURE,
+     GET_PROJECT_SUCCESS,
+     DELETE_PROJECT_SUCCESS,
+     CREATE_PROJECT_SUCCESS,
+     PATCH_PROJECT_SUCCESS
 } from "./actionType"
 
 const initState = {
     isLoading:false,
     isError:false,
     tasks:[],
-    workSpace:[]
+    workSpace:[],
+    projects:[]
 }
 
 
@@ -109,6 +114,45 @@ export const appReducer = (state={initState},{type,payload}) => {
                 ...state,
                 isLoading:false,
                 isError:true
+            }
+        }
+        case GET_PROJECT_SUCCESS:{
+            console.log(payload)
+            return {
+                ...state,
+                projects:payload
+            }
+        }
+        case DELETE_PROJECT_SUCCESS:{
+            console.log(payload)
+            let data = state.projects.filter((item)=>item._id !== payload)
+            return{
+                ...state,
+                projects:data
+            }
+        }
+        case CREATE_PROJECT_SUCCESS:{
+            console.log(payload)
+            return{
+                ...state,
+                projects:[...state.projects,payload]
+            }
+        }
+        case PATCH_PROJECT_SUCCESS:{
+            const {id,payload} = payload
+            const data = state.projects.map((item)=>{
+                if(item._id === id){
+                    return {
+                        ...item,payload
+                    }
+                }
+                else{
+                    return item
+                }
+            })
+            return {
+                ...state,
+                projects:data
             }
         }
        default : {

@@ -5,6 +5,7 @@ import Time from "../components/Time"
 import ProjectBody from '../pages/ProjectBody'
 import CreateProject from "../pages/CreateProject"
 import TaskContHead  from "../components/Task/TaskContHead"
+import EditProjectPage from "../pages/EditProjectPage";
 const AppRoute = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const AppRoute = () => {
       <Route path="/project"  element={<ProjectBody/>}/>
       <Route path="/newproject" element={<CreateProject/>} />
       <Route path="/task" element={<TaskContHead/>} />
+      <Route path="/editproject/:id" element={<EditProjectPage/>} />
     </Routes>
     </div>
   );

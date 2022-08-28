@@ -4,22 +4,38 @@ const ProjectModel = require('../Modals/project.model')
 const projectController = express.Router()
 // --------------------------------------------------------------------------------------------------->
 projectController.get("/", authentication, async (req, res)=>{
-   
-    try{
-        const project = await ProjectModel.find({userId:req.body.userId});
-        return res.send(project)
-    }catch(err){
-        res.send(err)
+
+    const {status} = req.query
+    const {userId} = req.body
+    if(status){
+        const projects = await ProjectModel.find({userId,status})
+        return res.send({
+            message:"GET REQUEST SUCCESSFUL",
+            projects
+        })
+    }
+    else if(userId){
+        const projects = await ProjectModel.find({userId})
+        return res.send({
+            message:"GET REQUEST SUCCESSFUL",
+            projects
+        })
+    }
+    else{
+        res.send({message:"You are not Authorized"})
+
     }
 
 })
 // --------------------------------------------------------------------------------------------------->
 projectController.post("/create", authentication, async(req, res)=>{
-    const {userId,} = req.body;
-    const project = new ProjectModel({...req.body })
-    await project.save();
-    if(project) return res.send({message : "project created successfully.",projectId:project._id}) 
-    else return res.send({message : "Please fill all field."}) 
+
+    const new_project = await new ProjectModel({
+        ...req.body,
+    })
+    new_project.save()
+    res.send({message:"Created successfully",new_project})
+
 })
 
 // --------------------------------------------------------------------------------------------------->

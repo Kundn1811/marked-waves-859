@@ -1,12 +1,14 @@
 import React, { useRef, useState } from "react";
 import styles from "../Styles/createproject.module.css";
 import { FiArrowLeft } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import { post_project } from "../redux/project/actions";
 import { useDispatch } from "react-redux";
-import { create_project } from "../redux/app/action";
+import { create_project, patch_request } from "../redux/app/action";
 
-const CreateProject = () => {
+const EditProjectPage = () => {
+    const {id} = useParams()
+    console.log(id)
   const ref = useRef([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const CreateProject = () => {
   const handleForm = (e) => {
     e.preventDefault();
     formData = {...formData, status:false}
-    dispatch(create_project(formData))
+    dispatch(patch_request(id,formData))
     navigate('/app/project')
     console.log(formData)
     // dispatch(post_project(formData, navigate, profileId));
@@ -97,7 +99,7 @@ const CreateProject = () => {
                     className={styles.projectnameInput}
                     type="text"
                     placeholder="Enter project name"
-                    required
+                  
                     name={"name"}
                     onChange={(e) => {
                       setFormData({
@@ -122,7 +124,7 @@ const CreateProject = () => {
                       });
                     }}
                     onKeyUp={checkShowSave}
-                    required
+                   
                   />
                 </div>
               </div>
@@ -263,4 +265,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default EditProjectPage;
