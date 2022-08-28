@@ -19,7 +19,7 @@ import {
   } from '@chakra-ui/react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
   import { useDispatch } from 'react-redux';
-  import {useNavigate} from "react-router-dom"
+  import {NavLink, useNavigate} from "react-router-dom"
 
   import {signin} from "../redux/auth/action"
 import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
@@ -143,7 +143,9 @@ import { SIGNIN_SUCCESS } from '../redux/auth/actionType';
 
                    <Stack pt={6}>
                      <Text align={'center'} color="black">
-                     Already have an account? <Link color={'blue.400'}>Login</Link>
+                     Don't have an account? <Link color={'blue.400'}>
+                        <NavLink to="/auth/signup">Sign up</NavLink>
+                     </Link>
                      </Text>
                    </Stack>
                </Box>
