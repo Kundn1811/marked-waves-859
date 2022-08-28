@@ -21,6 +21,7 @@ projectController.post("/create", authentication, async(req, res)=>{
     if(project) return res.send({message : "project created successfully.",projectId:project._id}) 
     else return res.send({message : "Please fill all field."}) 
 })
+
 // --------------------------------------------------------------------------------------------------->
 projectController.delete("/delete/:projectId", authentication, async (req, res)=>{
     const {projectId} = req.params

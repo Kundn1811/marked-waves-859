@@ -10,34 +10,26 @@ import { GET_TASKS_SUCCESS, TASK_CREATE_SUCCESS } from '../../redux/app/actionTy
 
 
 const TaskContHead = () => {
+    const [assign,setAssign] = React.useState("")
     const [show,setShow] = React.useState(false);
     const [assignee,setAssignee] = React.useState("Select Assignee")
     const [creater,SetCreater] = React.useState("")
     const [taskName,setTaskName] = React.useState("")
     const [project,setProject] = React.useState("")
-    const [tasks,setTasks] = React.useState([])
-
+    const [taskList,setTaskList] = React.useState([])
 
     const handleShow = () => setShow(true)
 
 
-    const members = [
-        "Rohit",
-        "Aaro",
-        'Satyendra'
-    ];
-    const projects = [
-        "a",
-        "v",
-        "c"
-    ]
     const clients = [
-        "a","b","c"    ]
+        "Arya","Bruce","Hector"    ]
     const tags = ["No work","Design","Development","Impletation","testing"]
     // const status = ["No tag","No work","Design","Development","Impletation","testing"]
-    const creator = ["a","b","c"]
-    const sources = ["a","b","c"]
-    const status = ["Open","Completed"]
+
+    const status = ["Open","Completed"];
+    const projects = ["Advance js","React js", "MOngoDb"]
+    const createrr = ["Aman","Arya","Anand"]
+   
  
     
 
@@ -45,21 +37,18 @@ const TaskContHead = () => {
     const dispatch = useDispatch()
     React.useEffect(()=>{
         dispatch(getTasks({}))
-        .then((res)=>{
-            if(res.type==GET_TASKS_SUCCESS) {
-                console.log(tasks)
-                setTasks(res.data)
-            }
-        })
+        .then((res)=>res.type==GET_TASKS_SUCCESS ? setTaskList(res.payload.tasks) : console.log("no tasks"))
     },[assignee,creater,taskName,project])
+   
     
 
     const PostNewTask = ()=>{
-        dispatch(createTask({assignee:"",creater:"",taskName:"",project:""}))
-        .then((res)=> console.log(res.data))
+        dispatch(createTask({assignee:"",creater:"",taskName:"",projectName:""}))
+        .then((res)=> res.type === 'TASK_CREATE_SUCCESS'  && res.payload.message == "task created successfully." ? dispatch(getTasks()).then((res)=>setTaskList(res.payload.tasks)).catch((err)=>console.log(err)) : console.log("err"))
         .catch((err) =>console.log(err))
     }
 
+<<<<<<< HEAD
     // const updateOne = () => {
     //     dispatch(updateTask({
 
@@ -72,6 +61,8 @@ const TaskContHead = () => {
     // }
 
 
+=======
+>>>>>>> d7fcdd24edd5313305da909ff596c7f3fceecb04
   return (
     <div className={styles.TaskHeadContWrapper}>
          <div className={styles.HeadSection} >
@@ -113,15 +104,15 @@ const TaskContHead = () => {
                      </div>
                      <div style={{color:"#777e85"}}>Members</div>
                     {
-                        members?.map((elem,index)=>(
+                        taskList?.map((elem,index)=>(
                             <div onClick={()=>{
-                                    setAssignee(elem)
+                                    setAssignee(elem.assignee)
                                     setShow(false)
                                 }} 
-                                className={styles.optionStyling} key={index} value={elem.name}>
+                                className={styles.optionStyling} key={index} value={elem.assignee}>
                                 <div className={styles.OptionFlex}>
                                     <div><i className="fa-solid fa-user-tie"></i></div>
-                                    <div>{elem}</div>
+                                    <div>{elem.assignee}</div>
                                 </div> 
                             </div>
                         ))
@@ -134,7 +125,7 @@ const TaskContHead = () => {
    {/*==========================Filter Section============================== */}
 
 
-        <duv className={styles.FilterWrapper}>
+        <div className={styles.FilterWrapper}>
         <div className={styles.filterButton}>
             <Select >
                 <option value='Project : All'>
@@ -178,7 +169,7 @@ const TaskContHead = () => {
                 <option value='Any'>
                     Creator : Any</option>
                 <option value='me'>Me</option>
-                {members?.map((elem)=>(
+                {createrr?.map((elem)=>(
                     <option value={elem}>{elem}</option>
                 ))}
             </Select>
@@ -194,8 +185,8 @@ const TaskContHead = () => {
             </div>
             <div className={styles.filterButton}>
               <button style={{marginTop:"2px",border:"solid #a1a7b2 1px",padding:"5px",borderRadius:"5px"}}>Clear Filters</button>
-            </div>
-        </duv>
+            </div> 
+        </div>
 
     {/*==========================New Task button Section============================== */}
 
@@ -231,7 +222,7 @@ const TaskContHead = () => {
             </div>
             </div>
             {
-                !tasks.length ? <NoResult /> : <NewTaskLayout tasks={tasks} />
+                !taskList.length ? <NoResult /> : <NewTaskLayout taskList={taskList} assignee={assignee} />
             }
         </div>
 

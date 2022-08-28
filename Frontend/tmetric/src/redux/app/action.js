@@ -127,9 +127,9 @@ export const createWorkSpace = (payload) => (dispatch) => {
 
 //=================================TASKS=================================
 
-export const getTasks = (payload) => (dispatch) => {
+export const getTasks = () => (dispatch) => {
     dispatch(getTasksRequest())
-    return axios.post("http://localhost:8080/tasks",payload,{
+    return axios.get("http://localhost:8080/task",{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
@@ -161,8 +161,9 @@ export const updateTask = (payload) => (dispatch) => {
 }
 
 export const deleteTask = (payload) => (dispatch) => {
+    // console.log(payload)
     dispatch(taskDeleteRequest())
-    return axios.patch("http://localhost:8080/task/delete",payload,{
+    return axios.delete("http://localhost:8080/task/delete",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
