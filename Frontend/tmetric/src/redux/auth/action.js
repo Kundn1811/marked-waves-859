@@ -48,14 +48,14 @@ export const signupFailure = (payload) => {
 export const signup = (payload) => (dispatch) => {
     console.log(payload)
     dispatch(signupRequest())
-    return axios.post("https://still-beach-42324.herokuapp.com/auth/signup",payload)
+    return axios.post("https://polar-woodland-63049.herokuapp.com/auth/signup",payload)
     .then((res)=>dispatch(signupSuccess(res.data)))
     .catch((err)=>dispatch(signupFailure(err)))
 }
 
 export const signin = (payload) => (dispatch) => {
     dispatch(signinRequest())
-    return axios.post("https://still-beach-42324.herokuapp.com/auth/signin",payload)
+    return axios.post("https://polar-woodland-63049.herokuapp.com/auth/signin",payload)
     .then((res)=>dispatch(signinSuccess(res.data)))
     .catch((err)=>dispatch(signinFailure(err)))
 }

@@ -28,7 +28,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.listen(process.env.port,async()=>{
+app.listen(process.env.PORT,async()=>{
     try {
         await connection;
         console.log("Database connected successfully")

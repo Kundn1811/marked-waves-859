@@ -17,9 +17,9 @@ function ProjectBody() {
       const dispatch = useDispatch();
     
     
-    // useEffect(()=>{
-    //     dispatch(get_projects())
-    // },[dispatch])
+    useEffect(()=>{
+        dispatch(get_projects())
+    },[dispatch])
   return (
     <div className={styles.main_container}>
       <div className={styles.container}>

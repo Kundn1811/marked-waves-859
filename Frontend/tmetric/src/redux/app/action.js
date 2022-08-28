@@ -16,7 +16,10 @@ import {
      GET_TASKS_FAILURE,
      GET_PROJECT_FAILURE,
      GET_PROJECT_SUCCESS,
-     GET_PROJECT_REQUEST
+     GET_PROJECT_REQUEST,
+     DELETE_PROJECT_SUCCESS,
+     CREATE_PROJECT_SUCCESS,
+     PATCH_PROJECT_SUCCESS
 } from "./actionType"
 import axios from 'axios'
 import { loadData } from "../../utils/localstorage"
@@ -174,20 +177,76 @@ export const deleteTask = (payload) => (dispatch) => {
     .then((res)=>dispatch(taskDeleteSuccess(res.data)))
     .catch((err)=>dispatch(taskDeleteFailure(err)))
 }
-
+// -------------------------------PROJECTS----------------------------------------------------
 export const get_projects = ()=>dispatch=>{
-    return axios.get("https://still-beach-42324.herokuapp.com/project/",{
+    return axios.get("https://polar-woodland-63049.herokuapp.com/project",{
         headers:{
             'Authorization':`Bearer ${loadData("tmetricUser")?.token}`
         }
     })
     .then((res)=>{
-        console.log(res.data)
+        console.log(res.data.projects)
         dispatch({
         type:GET_PROJECT_SUCCESS,
-        paylaod:res.data
+        payload:res.data.projects
     })})
     .catch((err)=>dispatch({
         type:GET_PROJECT_FAILURE
     }))
+}
+export const delete_project = (_id)=>dispatch=>{
+    console.log(_id)
+    return axios.delete(`https://polar-woodland-63049.herokuapp.com/project/${_id}/delete`,{
+        headers:{
+            'Authorization':`Bearer ${loadData("tmetricUser")?.token}`
+        }
+    })
+    .then((res)=>{
+
+        dispatch({
+            type:DELETE_PROJECT_SUCCESS,
+            payload:_id
+        })
+    })
+    .catch((err)=>{
+        console.log("error in deleting")
+    })
+}
+
+export const create_project = (payload)=>dispatch=>{
+    return axios.post(`https://polar-woodland-63049.herokuapp.com/project/create`,payload,{
+        headers:{
+            'Authorization':`Bearer ${loadData("tmetricUser")?.token}`
+        }
+    })
+    .then((res)=>{
+        console.log(res)
+        dispatch({
+            type:CREATE_PROJECT_SUCCESS,
+            payload
+
+        })
+    })
+    .catch((err)=>{
+        console.log("error in creating")
+    })
+}
+
+export const patch_request = (_id,payload)=>dispatch=>{
+    console.log(_id)
+    return axios.patch(`https://polar-woodland-63049.herokuapp.com/project/${_id}/patch`,payload,{
+        headers:{
+            'Authorization':`Bearer ${loadData("tmetricUser")?.token}`
+        }
+    })
+    .then((res)=>{
+
+        dispatch({
+            type:PATCH_PROJECT_SUCCESS,
+            payload:{_id,payload}
+        })
+    })
+    .catch((err)=>{
+        console.log("error in patching")
+    })
 }
