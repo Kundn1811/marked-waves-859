@@ -61,7 +61,7 @@ console.log(tasks)
             Projects
            
                {tasks?.map((elem)=>
-                 <ListItem px={5} bg="#dddd" borderRadius={5} margin={2} >
+                 <ListItem px={5} bg="#dddd" borderRadius={5} margin={2} cursor="pointer" >
                               <Flex>
                               <ListIcon as={CheckIcon} marginTop={2} color='green.500' onClick={()=>{
                                 setId({_id:elem._id});

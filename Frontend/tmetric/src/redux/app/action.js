@@ -115,7 +115,7 @@ export const taskDeleteFailure = (err) => {
 
 export const createWorkSpace = (payload) => (dispatch) => {
     dispatch(workspaceCreateRequest())
-    return axios.post("http://localhost:8080/workspace/create",payload,{
+    return axios.post("https://polar-woodland-63049.herokuapp.com/workspace/create",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
@@ -129,7 +129,7 @@ export const createWorkSpace = (payload) => (dispatch) => {
 
 export const getTasks = () => (dispatch) => {
     dispatch(getTasksRequest())
-    return axios.get("http://localhost:8080/task",{
+    return axios.get("https://polar-woodland-63049.herokuapp.com/task",{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
@@ -140,7 +140,7 @@ export const getTasks = () => (dispatch) => {
 
 export const createTask = (payload) => (dispatch) => {
     dispatch(taskCreateRequest())
-    return axios.post("http://localhost:8080/task/create",payload,{
+    return axios.post("https://polar-woodland-63049.herokuapp.com/task/create",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
@@ -151,7 +151,7 @@ export const createTask = (payload) => (dispatch) => {
 
 export const updateTask = (payload) => (dispatch) => {
     dispatch(taskUpdateRequest())
-    return axios.patch("http://localhost:8080/task/update",payload,{
+    return axios.patch("https://polar-woodland-63049.herokuapp.com/task/update",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
@@ -163,7 +163,7 @@ export const updateTask = (payload) => (dispatch) => {
 export const deleteTask = (payload) => (dispatch) => {
     // console.log(payload)
     dispatch(taskDeleteRequest())
-    return axios.delete("http://localhost:8080/task/delete",payload,{
+    return axios.delete("https://polar-woodland-63049.herokuapp.com/task/delete",payload,{
         headers : {
             "authorization" : `Bearer ${loadData("tmetricUser")?.token}`
         }
