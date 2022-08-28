@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../Styles/projectbody.module.css'
 import { IoIosSearch } from "react-icons/io";
 import { TiArrowUp } from "react-icons/ti";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { useNavigate } from 'react-router-dom';
 import Project from '../components/Project';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_projects } from '../redux/app/action';
+import { FiMoreHorizontal } from "react-icons/fi";
 
 function ProjectBody() {
     const [options, setOptions] = useState(false);
 
     const navigate = useNavigate()
+    let projects = useSelector((state)=>state.appReducer.projects)
+      const dispatch = useDispatch();
+    
+    
+    useEffect(()=>{
+        dispatch(get_projects())
+    },[dispatch])
   return (
     <div className={styles.main_container}>
       <div className={styles.container}>
@@ -104,15 +114,16 @@ function ProjectBody() {
             </div>
             <div></div>
           </div>
-          {/* {newArray?.map((el, index) => (
+          {projects?.map((el, index) => (
             <Project
               key={index}
-              {...el}
+            //   data = {...el}
               options={options}
               setOptions={setOptions}
               index={index}
+              data = {el}
             />
-          ))} */}
+          ))}
 
 
 

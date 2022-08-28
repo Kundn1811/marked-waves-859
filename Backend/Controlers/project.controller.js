@@ -3,17 +3,25 @@ const authentication = require('../Middleware/authentication')
 const ProjectModel = require('../Modals/project.model')
 const projectController = express.Router()
 // --------------------------------------------------------------------------------------------------->
-projectController.get("/", authentication, async (rrq, res)=>{
+projectController.get("/", authentication, async (req, res)=>{
+    const {status} = req.query
     const {userId} = req.body
-    const projects = await ProjectModel.find({userId})
-    if(projects){
+    if(status){
+        const projects = await ProjectModel.find({userId,status})
+        return res.send({
+            message:"GET REQUEST SUCCESSFUL",
+            projects
+        })
+    }
+    else if(userId){
+        const projects = await ProjectModel.find({userId})
         return res.send({
             message:"GET REQUEST SUCCESSFUL",
             projects
         })
     }
     else{
-        res.send("Please create some projects")
+        res.send({message:"You are not Authorized"})
     }
 })
 // --------------------------------------------------------------------------------------------------->
@@ -21,14 +29,8 @@ projectController.post("/create", authentication, async(req, res)=>{
     const new_project = await new ProjectModel({
         ...req.body,
     })
-    new_project.save((err, success)=>{
-        if(err){
-            res.send("Some error occured", err)
-        }
-        else{
-            res.send({message:"Success"})
-        }
-    })
+    new_project.save()
+    res.send({message:"Created successfully",new_project})
 })
 
 // --------------------------------------------------------------------------------------------------->
