@@ -26,7 +26,7 @@ const NewTaskLayout = ({taskList,addActivity}) => {
     const [id,setId] = React.useState()
     const [show,setShow] = React.useState(false)
     const [tasks,setTasks]=React.useState([])
-    const  [lead,setLead] =React.useState("Un Assigned")
+    const  [lead,setLead] =React.useState("Assigned")
     const [toRend,setTorend] = React.useState("")
     const dispatch = useDispatch()
     const [activity,setActivity] = React.useState([])
@@ -46,7 +46,7 @@ console.log(activity)
         let act = `${lead} deleted a task`
         activity.push(act)
         dispatch(deleteTask(toDelete))
-        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=='task deleted successfully.' ? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)& setTorend("a") & setLead(res.payload.lead)).catch((err)=>console.log(err)) : "")
+        .then((res)=>res.type==TASK_DELETE_SUCCESS && res.payload.message=='task deleted successfully.' ? dispatch(getTasks()).then((res)=>setTasks(res.payload.tasks)& setTorend("a")).catch((err)=>console.log(err)) : "")
     }
 
     React.useEffect(()=>{

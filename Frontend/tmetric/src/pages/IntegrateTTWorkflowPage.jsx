@@ -41,7 +41,7 @@ import {
   const handleNavigate = () =>{
      setTimeout(()=>{
         navigate("/auth/setupalmostcomp")
-     },10000)
+     },5000)
   }
     return (
        <div className={styles.SignUpapgeWrapper}>

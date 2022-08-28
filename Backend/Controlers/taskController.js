@@ -8,7 +8,7 @@ task.get("/",authentication, async(req,res)=>{
     const {userId} = req.body
     const user = await UserModel.findOne({userId})
     
-    const tasks = await TaskModel.find({})
+    const tasks = await TaskModel.find({userId})
     return res.send({tasks,lead:user.name})
 })
 task.post("/create",authentication,async(req,res)=>{
