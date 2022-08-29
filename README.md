@@ -2,9 +2,22 @@
 
 TMetric is time tracking software operated by TMetric team, headquartered in Prague, Czech Republic. It offers time tracking service for freelancers and small business owners who want to optimize their business processes and increase personal productivity.
 
-### Live deployed URL: 
+### Live deployed URL: https://creative-biscotti-30bdf4.netlify.app
 
 <h2>Landing Page</h2>
+<img src="./Project-images/Landing_page.png" alt="Landing Page"/>
+
+
+<h2>Pricing Page</h2>
+<img src="./Project-images/Pricing_page.png" alt="Pricing Page"/>
+
+<h2>Signup Page</h2>
+<img src="./Project-images/Signup_page.png" alt="Signup Page"/>
+
+<h2>Login Page</h2>
+<img src="./Project-images/Login_page.png" alt="Login Page"/>
+
+
 
    <h1>[Getting Started]</h1>
    <h3>Execution</h3>
