@@ -11,6 +11,14 @@ TMetric is time tracking software operated by TMetric team, headquartered in Pra
 <h2>Pricing Page</h2>
 <img src="./Project-images/Pricing_page.png" alt="Pricing Page"/>
 
+<h2>Signup Page</h2>
+<img src="./Project-images/Signup_page.png" alt="Signup Page"/>
+
+<h2>Login Page</h2>
+<img src="./Project-images/Login_page.png" alt="Login Page"/>
+
+
+
    <h1>[Getting Started]</h1>
    <h3>Execution</h3>
    <p>If you want to run our project in your local machine</p>
