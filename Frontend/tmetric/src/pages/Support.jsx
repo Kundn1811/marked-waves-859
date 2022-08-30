@@ -36,32 +36,32 @@ const Support = () => {
           <h2 className={style.videosph2}>Quick Start Videos</h2>
         </div>
 
-        <div className={style.videospvideo}>
-          <div className={style.videospvideo1}>
+        <ul className={style.videospvideo}>
+          <li className={style.videospvideo1}>
             <img
               src="https://i.ytimg.com/vi/jT3467I-c2M/mqdefault.jpg"
               alt=""
             />
-          </div>
-          <div className={style.videospvideo1}>
+          </li>
+          <li className={style.videospvideo1}>
             <img
               src="https://i.ytimg.com/vi/jT3467I-c2M/mqdefault.jpg"
               alt=""
             />
-          </div>
-          <div className={style.videospvideo1}>
+          </li>
+          <li className={style.videospvideo1}>
             <img
               src="https://i.ytimg.com/vi/jT3467I-c2M/mqdefault.jpg"
               alt=""
             />
-          </div>
-          <div className={style.videospvideo1}>
+          </li>
+          <li className={style.videospvideo1}>
             <img
               src="https://i.ytimg.com/vi/jT3467I-c2M/mqdefault.jpg"
               alt=""
             />
-          </div>
-        </div>
+          </li>
+        </ul>
         <div className={style.videospcnt}>
           <a
             href="https://www.youtube.com/playlist?list=PL74QEPdFcvLbliXZZ04Zm8UlGl_G6tmvL"
