@@ -75,16 +75,19 @@
   /* margin-left: 60px; */
   display: flex;
   justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+  margin: 0 -20px 1.2rem;
 }
 
 .videospvideo1 {
-  width: 300.25px;
-  height: 170.95px;
+  position: relative;
+  padding: 20px;
+  /* width: 33.333%; */
+  height: 100%;
 }
 
 .videospvideo1 > img {
-  width: 100%;
-  height: 100%;
   border-radius: 10px;
   cursor: pointer;
 }
