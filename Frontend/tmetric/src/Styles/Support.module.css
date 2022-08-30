@@ -69,12 +69,12 @@
 }
 
 .videospvideo {
-  width: 95%;
+  /* width: 95%; */
   height: fit-content;
   margin-top: 55px;
-  margin-left: 60px;
+  /* margin-left: 60px; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .videospvideo1 {
