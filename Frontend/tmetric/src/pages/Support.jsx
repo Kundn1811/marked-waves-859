@@ -338,7 +338,7 @@ const Support = () => {
         <div className={style.qmain1}>
           <div className={style.qmain1div}>
             <div className={style.qmain1divli}>
-              <h3>Subscription & Billing</h3>
+              <h3 className={style.qmainh3}>Subscription & Billing</h3>
               <ul>
                 <li>• Do you have discounts for non-profits?</li>
                 <li>• Do you have volume discounts?</li>
@@ -362,7 +362,7 @@ const Support = () => {
             </div>
 
             <div className={style.qmain1divli}>
-              <h3>Time Tracking</h3>
+              <h3 className={style.qmainh3}>Time Tracking</h3>
               <ul>
                 <li>• Can I add custom notes for a time entry?</li>
                 <li>• Can I have two active timers at the same time?</li>
@@ -384,7 +384,7 @@ const Support = () => {
 
           <div className={style.qmain1div}>
             <div className={style.qmain1divli}>
-              <h3>Productivity Tracking</h3>
+              <h3 className={style.qmainh3}>Productivity Tracking</h3>
               <ul>
                 <li>• What data is collected in TMetric?</li>
                 <li>• How long is activity data stored?</li>
@@ -396,7 +396,7 @@ const Support = () => {
             </div>
 
             <div className={style.qmain1divli}>
-              <h3>Projects</h3>
+              <h3 className={style.qmainh3}>Projects</h3>
               <ul>
                 <li>
                   • Can I allow creating projects for regular team members?
@@ -412,7 +412,7 @@ const Support = () => {
             </div>
 
             <div className={style.qmain1divli}>
-              <h3>Team Management</h3>
+              <h3 className={style.qmainh3}>Team Management</h3>
               <ul>
                 <li>
                   • Can I delete a team member and not lose the time tracked on
@@ -429,7 +429,7 @@ const Support = () => {
 
           <div className={style.qmain1div}>
             <div className={style.qmain1divli}>
-              <h3>Time Off</h3>
+              <h3 className={style.qmainh3}>Time Off</h3>
               <ul>
                 <li>
                   • How can I find out how much vacation time I will have in a
@@ -446,7 +446,7 @@ const Support = () => {
             </div>
 
             <div className={style.qmain1divli}>
-              <h3>Reporting</h3>
+              <h3 className={style.qmainh3}>Reporting</h3>
               <ul>
                 <li>• How can I see distribution of time between my tasks?</li>
                 <li>• How to view all time entries for entire project span?</li>
@@ -463,7 +463,7 @@ const Support = () => {
             </div>
 
             <div className={style.qmain1divli}>
-              <h3>Tasks</h3>
+              <h3 className={style.qmainh3}>Tasks</h3>
               <ul>
                 <li>• I am a workspace owner, why I don't see my tasks.</li>
                 <li>
@@ -483,7 +483,7 @@ const Support = () => {
         <div className={style.cmainh1}>
           <h1>There is no topic you interested in?</h1>
         </div>
-        <div className={style.cmainh1}>
+        <div className={style.cmainh3}>
           <h3>
             If you didn't find what you were looking for, you can make a support
             request or email <br />
